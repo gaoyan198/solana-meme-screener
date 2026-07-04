@@ -1,7 +1,8 @@
 {
   "alerted": {
     "Bm5hU3iYP9syzZHte1Ubv5GjSkMjFsCqaVyWcBdpump": 1783173461.2496643,
-    "3R51JJP2TZosMTHszJxbB4KCshVL67LU4Q8cynVMpump": 1783186732.3721423
+    "3R51JJP2TZosMTHszJxbB4KCshVL67LU4Q8cynVMpump": 1783186732.3721423,
+    "DLAHMrDSzThzBRFQdi9CYtH1aej9hALWexMM6Bnnpump": 1783190555.7860606
   },
   "history": {
     "Ge686M2HepBw2YGW5ozoMPnYR8YRQM313J6HL2aJpump": [
@@ -70,6 +71,10 @@
       [
         1783186702.7371469,
         2814.0
+      ],
+      [
+        1783190524.1212702,
+        2783.0
       ]
     ],
     "FJSKRhn5ZGtv66HtgaqVY9oNsV2KeynngLTq6PX4pump": [
@@ -158,6 +163,10 @@
       [
         1783186703.367745,
         734.0
+      ],
+      [
+        1783190526.7892675,
+        705.0
       ]
     ],
     "GaZb3DE2U3Jcjx7ddAVwobsBKnCaDoJWLbzTvJYhpump": [
@@ -180,6 +189,10 @@
       [
         1783186710.2441702,
         2322.0
+      ],
+      [
+        1783190532.7796648,
+        2328.0
       ]
     ],
     "7szutJHnYxPLxUgJrtXxzAiA5fYU5rmWQ47nT1Epump": [
@@ -310,6 +323,10 @@
       [
         1783186714.074541,
         1084.0
+      ],
+      [
+        1783190537.34697,
+        1070.0
       ]
     ],
     "3BfXW2uTt6N3hgktvsHPtghDbgxKpiLuGnW63fPjpump": [
@@ -336,6 +353,10 @@
       [
         1783186702.0685835,
         1235.0
+      ],
+      [
+        1783190522.2941518,
+        1291.0
       ]
     ],
     "7zm3Wn3VUsQVSE9M6W5mdLcwBxCL9TqycLFScD8hpump": [
@@ -362,6 +383,10 @@
       [
         1783186706.6217883,
         1234.0
+      ],
+      [
+        1783190530.0303423,
+        1180.0
       ]
     ],
     "5z6djd93D4twJD4mi8ST7tdAmA4XmrkovXuJy3mjpump": [
@@ -372,6 +397,10 @@
       [
         1783186705.3029854,
         682.0
+      ],
+      [
+        1783190528.5613573,
+        641.0
       ]
     ],
     "MGwXSefHMCUXXGj1vH9HdtrtjJmkmG1ZDNBbq2vpump": [
@@ -384,6 +413,10 @@
       [
         1783178144.7305646,
         161.0
+      ],
+      [
+        1783190531.9124222,
+        291.0
       ]
     ],
     "G5r1veuAcPKBU6rjAXaH6xqdXTE8n56DxDzRCf1Wpump": [
@@ -396,6 +429,10 @@
       [
         1783182542.6818638,
         479.0
+      ],
+      [
+        1783190523.177089,
+        794.0
       ]
     ],
     "J3K3fEaeGcBPk9pA4y1bZAnu7QireYvwBhxwQGmWbonk": [
@@ -406,6 +443,10 @@
       [
         1783186712.1705146,
         212.0
+      ],
+      [
+        1783190534.6482177,
+        199.0
       ]
     ],
     "97ifNtzSb5GhTHDpL3DgN3mppbENkLzpdMsefs2Jeww7": [
@@ -416,6 +457,10 @@
       [
         1783186712.8155978,
         976.0
+      ],
+      [
+        1783190535.5875525,
+        974.0
       ]
     ],
     "BJR8CP2s2tiuqhp1kVLGsjTqkb3a3om3CbPttrBEKcq5": [
@@ -432,6 +477,10 @@
       [
         1783186713.4496062,
         469.0
+      ],
+      [
+        1783190536.4423263,
+        382.0
       ]
     ],
     "65UKvtEvn2qZc6UbGRdkfndhxoX1Ysd5BaCJ95sxpump": [
@@ -450,6 +499,10 @@
       [
         1783186704.661563,
         412.0
+      ],
+      [
+        1783190525.9369886,
+        485.0
       ]
     ],
     "53EXLWRnd8VUfWB3GBMqkbxQ9GMoZGPAeYKzZNCU74Et": [
@@ -462,12 +515,28 @@
       [
         1783186714.9690294,
         158.0
+      ],
+      [
+        1783190530.9707341,
+        323.0
       ]
     ],
     "CkL5aL9TGw5v3avjcSo416v5RkKbEcdHd2TzpfkXpump": [
       [
         1783186715.599026,
         437.0
+      ]
+    ],
+    "2QmeV9z32WYmKexeb3YbxQBCL72dxcQcc8wQNeYnpump": [
+      [
+        1783190525.039784,
+        547.0
+      ]
+    ],
+    "92BSua9ozhTNm965jzgLbEpYVGkTsu6MWcTBi3z1pump": [
+      [
+        1783190533.7307148,
+        205.0
       ]
     ]
   },
@@ -483,6 +552,17 @@
         "sl_price": 8.957999999999999e-05,
         "sol_entry": 82.38,
         "btc_entry": 63076
+      },
+      "DLAHMrDSzThzBRFQdi9CYtH1aej9hALWexMM6Bnnpump": {
+        "symbol": "Corruption",
+        "score": 75.3,
+        "entry_ts": 1783190555.9710982,
+        "entry_price": 0.0001409,
+        "entry_mcap": 140874.0,
+        "tp_price": 0.0002818,
+        "sl_price": 8.454e-05,
+        "sol_entry": 82.14,
+        "btc_entry": 63062
       }
     },
     "closed": [
