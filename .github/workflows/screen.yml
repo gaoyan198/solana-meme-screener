@@ -1,0 +1,58 @@
+name: meme-screen
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # every 5 minutes (GitHub's minimum granularity)
+  workflow_dispatch: {}
+
+# Prevent overlapping runs from stepping on the committed state file.
+concurrency:
+  group: meme-screen
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  screen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Screen
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GMGN_PROXY: ${{ secrets.GMGN_PROXY }}
+          GMGN_API_KEY: ${{ secrets.GMGN_API_KEY }}
+          # Thresholds via repo Variables (Settings → Variables) — fall back to code defaults.
+          MIN_SCORE: ${{ vars.MIN_SCORE }}
+          MAX_TOKEN_AGE_HOURS: ${{ vars.MAX_TOKEN_AGE_HOURS }}
+          MIN_LIQUIDITY_USD: ${{ vars.MIN_LIQUIDITY_USD }}
+          MIN_MCAP_USD: ${{ vars.MIN_MCAP_USD }}
+          MAX_MCAP_USD: ${{ vars.MAX_MCAP_USD }}
+          MIN_HOLDERS: ${{ vars.MIN_HOLDERS }}
+          MAX_TOP10_RATE: ${{ vars.MAX_TOP10_RATE }}
+          MAX_H1_GAIN_PCT: ${{ vars.MAX_H1_GAIN_PCT }}
+          MAX_ALERTS_PER_SCAN: ${{ vars.MAX_ALERTS_PER_SCAN }}
+          ALERT_COOLDOWN_HOURS: ${{ vars.ALERT_COOLDOWN_HOURS }}
+        run: python main.py
+
+      - name: Persist state
+        run: |
+          if ! git diff --quiet -- state.json; then
+            git config user.name "meme-screener"
+            git config user.email "meme-screener@users.noreply.github.com"
+            git add state.json
+            git commit -m "chore: update scan state [skip ci]"
+            git push
+          else
+            echo "No state change."
+          fi
