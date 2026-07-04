@@ -43,6 +43,9 @@ jobs:
           MAX_H1_GAIN_PCT: ${{ vars.MAX_H1_GAIN_PCT }}
           MAX_ALERTS_PER_SCAN: ${{ vars.MAX_ALERTS_PER_SCAN }}
           ALERT_COOLDOWN_HOURS: ${{ vars.ALERT_COOLDOWN_HOURS }}
+          PAPER_HOLD_HOURS: ${{ vars.PAPER_HOLD_HOURS }}
+          PAPER_TP_PCT: ${{ vars.PAPER_TP_PCT }}
+          PAPER_SL_PCT: ${{ vars.PAPER_SL_PCT }}
         run: python main.py
 
       - name: Persist state

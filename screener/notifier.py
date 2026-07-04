@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import requests
 
+from . import paper
 from .config import config
 from .log import get_logger
 from .scoring import Scored
@@ -31,6 +32,18 @@ def _fmt(sc: Scored) -> str:
     lines += [
         "",
         f"• MCAP *{mcap}* · Liq *{liq}* · Age *{age}* · Holders *{holders}*",
+    ]
+    if s.price_usd:
+        tp, sl = paper.targets(s.price_usd)
+        lines += [
+            "",
+            "📐 *Plan (mechanical, not advice)*",
+            f"Entry ≤ *${s.price_usd * 1.1:.6g}* (alert ${s.price_usd:.6g} — don't chase past +10%)",
+            f"TP *${tp:.6g}* (+{config.paper_tp_pct:.0f}%) · Stop *${sl:.6g}* "
+            f"(−{config.paper_sl_pct:.0f}%) · Time exit {config.paper_hold_hours:.0f}h",
+        ]
+    lines += [
+        "",
         f"`{s.address}`",
         f"[GMGN](https://gmgn.ai/sol/token/{s.address}) · "
         f"[DexScreener](https://dexscreener.com/solana/{s.address}) · "

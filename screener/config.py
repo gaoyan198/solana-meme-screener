@@ -47,9 +47,12 @@ class Config:
     max_alerts_per_scan: int = field(default_factory=lambda: _int("MAX_ALERTS_PER_SCAN", 3))
     alert_cooldown_hours: float = field(default_factory=lambda: _float("ALERT_COOLDOWN_HOURS", 24))
 
-    # --- paper trading ---
+    # --- paper trading / trade plan ---
     paper_hold_hours: float = field(default_factory=lambda: _float("PAPER_HOLD_HOURS", 72))
     paper_notional_usd: float = field(default_factory=lambda: _float("PAPER_NOTIONAL_USD", 100))
+    # Mechanical bracket: take profit at +X%, stop loss at -Y% of alert price.
+    paper_tp_pct: float = field(default_factory=lambda: _float("PAPER_TP_PCT", 100))
+    paper_sl_pct: float = field(default_factory=lambda: _float("PAPER_SL_PCT", 40))
 
     # --- scan budget (stay under GMGN's rate limit on a 5-min cron) ---
     trending_limit: int = field(default_factory=lambda: _int("TRENDING_LIMIT", 100))

@@ -1,11 +1,14 @@
 """Paper-trading ledger over screener alerts.
 
 Every Telegram alert opens a hypothetical fixed-notional position at the
-alert price, with SOL and BTC spot recorded as benchmarks. The scan cron
-closes positions after PAPER_HOLD_HOURS (default 72h) at the then-current
-Dexscreener price — or at $0 if the pair is gone / liquidity has drained
-below exit-ability, which is what actually happens to rugs. `report_text()`
-renders the running book for the daily Telegram digest.
+alert price with a mechanical bracket: take profit at +PAPER_TP_PCT%, stop
+loss at -PAPER_SL_PCT%, time exit after PAPER_HOLD_HOURS. The 5-min scan cron
+tends the book: each open position is marked via Dexscreener and closed when
+it crosses its bracket, rugs (pair gone / liquidity below exit-ability → $0),
+or times out. Exits fill at the *sampled* price, so a spike that reverses
+inside 5 minutes is missed — fine for judging the screen, generous vs real
+slippage. SOL and BTC spot are recorded at entry/exit as benchmarks.
+`report_text()` renders the running book for the daily Telegram digest.
 
 The ledger lives in state.json next to the dedup/history data, so GitHub
 Actions persists it between runs. Closing only happens in scan runs (which
@@ -27,6 +30,17 @@ log = get_logger("paper")
 
 # Below this the position is unsellable in practice — mark it to zero.
 DEAD_LIQUIDITY_USD = 500
+# Don't rug-close a position this young on a missing pair — Dexscreener may
+# just be re-indexing; give it a couple of scans to reappear.
+MIN_RUG_AGE_HOURS = 0.5
+
+
+def targets(entry_price: float) -> tuple[float, float]:
+    """(take_profit, stop_loss) prices for the mechanical bracket."""
+    return (
+        entry_price * (1 + config.paper_tp_pct / 100),
+        entry_price * (1 - config.paper_sl_pct / 100),
+    )
 
 
 def record(sc: Scored) -> None:
@@ -39,16 +53,20 @@ def record(sc: Scored) -> None:
     if s.address in book["open"] or any(p.get("mint") == s.address for p in book["closed"]):
         return
     sol, btc = sol_btc_prices()
+    tp, sl = targets(s.price_usd)
     book["open"][s.address] = {
         "symbol": s.symbol,
         "score": round(sc.total, 1),
         "entry_ts": time.time(),
         "entry_price": s.price_usd,
         "entry_mcap": s.mcap_usd,
+        "tp_price": tp,
+        "sl_price": sl,
         "sol_entry": sol,
         "btc_entry": btc,
     }
-    log.info("paper open %s @ $%.6g (score %.0f)", s.symbol, s.price_usd, sc.total)
+    log.info("paper open %s @ $%.6g (score %.0f, tp $%.6g, sl $%.6g)",
+             s.symbol, s.price_usd, sc.total, tp, sl)
 
 
 def backfill_alerted() -> None:
@@ -67,12 +85,15 @@ def backfill_alerted() -> None:
         if not price:
             continue
         symbol = ((pair.get("baseToken") or {}).get("symbol")) or mint[:6]
+        tp, sl = targets(price)
         book["open"][mint] = {
             "symbol": str(symbol),
             "score": None,
             "entry_ts": time.time(),   # entry is backfill time, not alert time
             "entry_price": price,
             "entry_mcap": num(pair, "marketCap", "fdv"),
+            "tp_price": tp,
+            "sl_price": sl,
             "sol_entry": sol,
             "btc_entry": btc,
             "backfilled": True,
@@ -80,25 +101,43 @@ def backfill_alerted() -> None:
         log.info("paper backfill %s @ $%.6g", symbol, price)
 
 
-def close_due() -> None:
-    """Close open positions that have reached the holding period."""
+def tend() -> None:
+    """Mark every open position; close on bracket cross, rug, or time expiry."""
     now = time.time()
     hold_sec = config.paper_hold_hours * 3600
     book = state.paper
-    due = [m for m, p in book["open"].items() if now - p["entry_ts"] >= hold_sec]
-    if not due:
+    if not book["open"]:
+        return
+    to_close: list[tuple[str, str, float]] = []   # (mint, reason, exit price)
+    for mint, pos in book["open"].items():
+        if "tp_price" not in pos:   # positions opened before brackets existed
+            pos["tp_price"], pos["sl_price"] = targets(pos["entry_price"])
+        age_h = (now - pos["entry_ts"]) / 3600
+        price = _mark(mint)
+        if price <= 0:
+            if age_h >= MIN_RUG_AGE_HOURS:
+                to_close.append((mint, "rug", 0.0))
+        elif price >= pos["tp_price"]:
+            to_close.append((mint, "tp", price))
+        elif price <= pos["sl_price"]:
+            to_close.append((mint, "sl", price))
+        elif age_h * 3600 >= hold_sec:
+            to_close.append((mint, "time", price))
+    if not to_close:
         return
     sol, btc = sol_btc_prices()
-    for mint in due:
+    for mint, reason, price in to_close:
         pos = book["open"].pop(mint)
         pos["mint"] = mint
         pos["exit_ts"] = now
-        pos["exit_price"] = _mark(mint)
+        pos["exit_price"] = price
+        pos["exit_reason"] = reason
         pos["sol_exit"] = sol
         pos["btc_exit"] = btc
         book["closed"].append(pos)
-        r = _ret(pos["entry_price"], pos["exit_price"])
-        log.info("paper close %s: %s", pos["symbol"], f"{r:+.0%}" if r is not None else "?")
+        r = _ret(pos["entry_price"], price)
+        log.info("paper close %s [%s]: %s", pos["symbol"], reason,
+                 f"{r:+.0%}" if r is not None else "?")
     book["closed"] = book["closed"][-100:]
 
 
@@ -124,7 +163,12 @@ def _fmt_pos(pos: dict, exit_price: float | None, sol_now: float | None,
     sol_r = _ret(pos.get("sol_entry"), pos.get("sol_exit") if closed else sol_now)
     btc_r = _ret(pos.get("btc_entry"), pos.get("btc_exit") if closed else btc_now)
     held_h = ((pos.get("exit_ts") or time.time()) - pos["entry_ts"]) / 3600
-    tag = " (backfilled)" if pos.get("backfilled") else ""
+    tags = []
+    if pos.get("exit_reason"):
+        tags.append(pos["exit_reason"].upper())
+    if pos.get("backfilled"):
+        tags.append("backfilled")
+    tag = f" [{', '.join(tags)}]" if tags else ""
     line = (
         f"• `{pos['symbol']}` *{f'{r:+.0%}' if r is not None else '?'}* "
         f"({held_h:.0f}h){tag} · SOL {f'{sol_r:+.1%}' if sol_r is not None else '?'} "

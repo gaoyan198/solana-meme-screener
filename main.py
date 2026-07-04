@@ -39,7 +39,7 @@ def run_scan(alert: bool = True) -> None:
         new += 1
     if alert:
         paper.backfill_alerted()
-        paper.close_due()
+        paper.tend()
     state.save()
     log.info("Scan complete: %d hit(s) ≥ %.0f, %d new alert(s) sent.",
              len(hits), config.min_score, new)

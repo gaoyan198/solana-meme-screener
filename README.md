@@ -48,14 +48,22 @@ python main.py test-alert  # check Telegram wiring
 
 ## Paper trading
 
-Every alert automatically opens a hypothetical **$100** position at the alert
-price, with SOL and BTC spot recorded as benchmarks (CoinGecko). The 5-min
-scan cron closes each position after **72h** at the then-current Dexscreener
-price — or at **$0** if the pair is gone / liquidity has drained below $500,
-which is what actually happens to rugs. A daily report (09:00 SGT) shows every
-flagged coin, its return over the holding window, and what the same $100 in
-SOL or BTC would have done. This is the built-in reality check: if the book
-doesn't beat SOL after a few weeks of alerts, the screen has no edge.
+Every alert carries a mechanical trade plan and automatically opens a
+hypothetical **$100** position at the alert price, with SOL and BTC spot
+recorded as benchmarks (CoinGecko). The 5-min scan cron tends the book — each
+position closes on whichever comes first:
+
+- **TP** +100% · **Stop** −40% (filled at the sampled 5-min price, so a spike
+  that reverses within one scan is missed; still generous vs real slippage)
+- **Rug**: pair gone or liquidity < $500 → marked to $0, because that's what
+  an unsellable position is worth
+- **Time exit** after 72h
+
+A daily report (09:00 SGT) shows every flagged coin, its return, exit reason,
+and what the same $100 in SOL or BTC would have done. This is the built-in
+reality check: if the book doesn't beat SOL after a few weeks of alerts, the
+screen has no edge. The plan levels are position-management arithmetic, not a
+price prediction — nobody can honestly derive a target for a 3-hour-old token.
 
 ## Deploy (GitHub Actions, every 5 min)
 
