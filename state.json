@@ -15,6 +15,10 @@
       [
         1783173928.0769255,
         312.0
+      ],
+      [
+        1783178134.7187552,
+        271.0
       ]
     ],
     "8zg7JgJmn39HXipExTFdFoXVKTGFHRWqBBb95ph8pump": [
@@ -35,6 +39,10 @@
       [
         1783173928.7394168,
         668.0
+      ],
+      [
+        1783178135.3826723,
+        638.0
       ]
     ],
     "Bm5hU3iYP9syzZHte1Ubv5GjSkMjFsCqaVyWcBdpump": [
@@ -49,6 +57,10 @@
       [
         1783173929.3970585,
         2902.0
+      ],
+      [
+        1783178136.0625806,
+        2947.0
       ]
     ],
     "FJSKRhn5ZGtv66HtgaqVY9oNsV2KeynngLTq6PX4pump": [
@@ -63,6 +75,10 @@
       [
         1783173934.8196955,
         1092.0
+      ],
+      [
+        1783178136.977616,
+        1117.0
       ]
     ],
     "Cmzxu3ZhbGnXVLk1GkfwWbbJYiCDDCPh9t8FEGvhpump": [
@@ -77,6 +93,10 @@
       [
         1783173935.4798028,
         192.0
+      ],
+      [
+        1783178139.1547303,
+        158.0
       ]
     ],
     "3R51JJP2TZosMTHszJxbB4KCshVL67LU4Q8cynVMpump": [
@@ -97,6 +117,10 @@
       [
         1783173936.1493492,
         592.0
+      ],
+      [
+        1783178138.5280628,
+        739.0
       ]
     ],
     "GaZb3DE2U3Jcjx7ddAVwobsBKnCaDoJWLbzTvJYhpump": [
@@ -107,6 +131,10 @@
       [
         1783173936.7773242,
         2289.0
+      ],
+      [
+        1783178142.7805338,
+        2327.0
       ]
     ],
     "7szutJHnYxPLxUgJrtXxzAiA5fYU5rmWQ47nT1Epump": [
@@ -117,6 +145,10 @@
       [
         1783173939.7087858,
         2327.0
+      ],
+      [
+        1783178144.0489562,
+        2295.0
       ]
     ],
     "B2TAnQarK6Bm3Fg99rxBTwvukwbzUDNqGMJesoT2pump": [
@@ -137,6 +169,10 @@
       [
         1783173941.0388932,
         635.0
+      ],
+      [
+        1783178142.1118,
+        583.0
       ]
     ],
     "5oAcPhcjmnGFvQmcAdNor33vrHeA5KmFXPUaZ5GBpump": [
@@ -159,6 +195,10 @@
       [
         1783173942.7628045,
         402.0
+      ],
+      [
+        1783178145.7057621,
+        368.0
       ]
     ],
     "9DGSjoLirvhJCvL6qCBVhGZzB5mK57jec5MsmBrWpump": [
@@ -218,6 +258,54 @@
         1783173947.8678303,
         79.0
       ]
+    ],
+    "DLAHMrDSzThzBRFQdi9CYtH1aej9hALWexMM6Bnnpump": [
+      [
+        1783178134.0895743,
+        652.0
+      ]
+    ],
+    "7zm3Wn3VUsQVSE9M6W5mdLcwBxCL9TqycLFScD8hpump": [
+      [
+        1783178137.8698428,
+        324.0
+      ]
+    ],
+    "HVfDP6TGBQyHPngH8EsFYUQru7ruULj9Nd3Hzmgqpump": [
+      [
+        1783178139.8422794,
+        238.0
+      ]
+    ],
+    "4EKJBc4WdeCViLRCfRx5ieFHfPFuBYhV49527GUBpump": [
+      [
+        1783178140.4969974,
+        1393.0
+      ]
+    ],
+    "5z6djd93D4twJD4mi8ST7tdAmA4XmrkovXuJy3mjpump": [
+      [
+        1783178141.1293604,
+        428.0
+      ]
+    ],
+    "MGwXSefHMCUXXGj1vH9HdtrtjJmkmG1ZDNBbq2vpump": [
+      [
+        1783178143.418861,
+        337.0
+      ]
+    ],
+    "Dur39Hv43Uw4HU9Zr4RUB7mH6kqmYdPpZfENup6Xpump": [
+      [
+        1783178144.7305646,
+        161.0
+      ]
+    ],
+    "G5r1veuAcPKBU6rjAXaH6xqdXTE8n56DxDzRCf1Wpump": [
+      [
+        1783178146.4483736,
+        491.0
+      ]
     ]
   },
   "paper": {
@@ -230,7 +318,9 @@
         "entry_mcap": 561529.0,
         "sol_entry": 81.62,
         "btc_entry": 62571,
-        "backfilled": true
+        "backfilled": true,
+        "tp_price": 0.001123,
+        "sl_price": 0.0003369
       }
     },
     "closed": []
