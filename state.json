@@ -83,6 +83,10 @@
       [
         1783199494.394664,
         2838.0
+      ],
+      [
+        1783203249.6985345,
+        2846.0
       ]
     ],
     "FJSKRhn5ZGtv66HtgaqVY9oNsV2KeynngLTq6PX4pump": [
@@ -179,6 +183,10 @@
       [
         1783195153.2382233,
         702.0
+      ],
+      [
+        1783203253.421587,
+        731.0
       ]
     ],
     "GaZb3DE2U3Jcjx7ddAVwobsBKnCaDoJWLbzTvJYhpump": [
@@ -259,6 +267,10 @@
       [
         1783199501.7602525,
         537.0
+      ],
+      [
+        1783203256.5005314,
+        513.0
       ]
     ],
     "5oAcPhcjmnGFvQmcAdNor33vrHeA5KmFXPUaZ5GBpump": [
@@ -389,6 +401,10 @@
       [
         1783199492.6302252,
         1297.0
+      ],
+      [
+        1783203248.2851503,
+        1267.0
       ]
     ],
     "7zm3Wn3VUsQVSE9M6W5mdLcwBxCL9TqycLFScD8hpump": [
@@ -427,6 +443,10 @@
       [
         1783199500.9122725,
         1113.0
+      ],
+      [
+        1783203255.8100011,
+        1146.0
       ]
     ],
     "5z6djd93D4twJD4mi8ST7tdAmA4XmrkovXuJy3mjpump": [
@@ -449,6 +469,10 @@
       [
         1783199499.2176325,
         650.0
+      ],
+      [
+        1783203254.7987013,
+        648.0
       ]
     ],
     "MGwXSefHMCUXXGj1vH9HdtrtjJmkmG1ZDNBbq2vpump": [
@@ -473,6 +497,10 @@
       [
         1783199496.8684745,
         306.0
+      ],
+      [
+        1783203251.1671982,
+        315.0
       ]
     ],
     "G5r1veuAcPKBU6rjAXaH6xqdXTE8n56DxDzRCf1Wpump": [
@@ -497,6 +525,10 @@
       [
         1783199493.551183,
         677.0
+      ],
+      [
+        1783203249.0490236,
+        660.0
       ]
     ],
     "J3K3fEaeGcBPk9pA4y1bZAnu7QireYvwBhxwQGmWbonk": [
@@ -533,6 +565,10 @@
       [
         1783199502.551547,
         1033.0
+      ],
+      [
+        1783203257.2708418,
+        1036.0
       ]
     ],
     "BJR8CP2s2tiuqhp1kVLGsjTqkb3a3om3CbPttrBEKcq5": [
@@ -579,6 +615,10 @@
       [
         1783195152.4391668,
         399.0
+      ],
+      [
+        1783203251.8646226,
+        346.0
       ]
     ],
     "53EXLWRnd8VUfWB3GBMqkbxQ9GMoZGPAeYKzZNCU74Et": [
@@ -603,6 +643,10 @@
       [
         1783199498.3068812,
         449.0
+      ],
+      [
+        1783203254.1229937,
+        427.0
       ]
     ],
     "CkL5aL9TGw5v3avjcSo416v5RkKbEcdHd2TzpfkXpump": [
@@ -639,6 +683,10 @@
       [
         1783199496.0652332,
         329.0
+      ],
+      [
+        1783203250.4564655,
+        354.0
       ]
     ],
     "4bmegSVkbyDXG8Db82QR9wfgCidSrKuMKE142jpTpump": [
@@ -655,6 +703,10 @@
       [
         1783199503.3421628,
         295.0
+      ],
+      [
+        1783203257.9468675,
+        300.0
       ]
     ],
     "53X1BjesvfEUbLemKZfQzfeg9Eoyu2p7iSGEeAbppump": [
@@ -674,6 +726,24 @@
         1783199504.807175,
         134.0
       ]
+    ],
+    "z4trXMhGt2sSzkLVS8C9t4yF7D9ugR9ALc7T2UFpump": [
+      [
+        1783203252.7266257,
+        88.0
+      ]
+    ],
+    "3f9LEP4RNM1yq5VnCD1LYMvq7FZis5tfGqyZMsiRpump": [
+      [
+        1783203258.7212338,
+        89.0
+      ]
+    ],
+    "GF2NzsGQddYMxQNwJH3YYLnr1S7YN3DFkVp5MLcgpump": [
+      [
+        1783203259.776545,
+        209.0
+      ]
     ]
   },
   "paper": {
@@ -688,17 +758,6 @@
         "sl_price": 8.957999999999999e-05,
         "sol_entry": 82.38,
         "btc_entry": 63076
-      },
-      "DLAHMrDSzThzBRFQdi9CYtH1aej9hALWexMM6Bnnpump": {
-        "symbol": "Corruption",
-        "score": 75.3,
-        "entry_ts": 1783190555.9710982,
-        "entry_price": 0.0001409,
-        "entry_mcap": 140874.0,
-        "tp_price": 0.0002818,
-        "sl_price": 8.454e-05,
-        "sol_entry": 82.14,
-        "btc_entry": 63062
       }
     },
     "closed": [
@@ -719,6 +778,23 @@
         "exit_reason": "sl",
         "sol_exit": 82.13,
         "btc_exit": 62822
+      },
+      {
+        "symbol": "Corruption",
+        "score": 75.3,
+        "entry_ts": 1783190555.9710982,
+        "entry_price": 0.0001409,
+        "entry_mcap": 140874.0,
+        "tp_price": 0.0002818,
+        "sl_price": 8.454e-05,
+        "sol_entry": 82.14,
+        "btc_entry": 63062,
+        "mint": "DLAHMrDSzThzBRFQdi9CYtH1aej9hALWexMM6Bnnpump",
+        "exit_ts": 1783203274.8248374,
+        "exit_price": 8.069e-05,
+        "exit_reason": "sl",
+        "sol_exit": 81.84,
+        "btc_exit": 63196
       }
     ]
   }
