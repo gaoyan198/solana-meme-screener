@@ -1,0 +1,32 @@
+name: paper-report
+
+on:
+  schedule:
+    - cron: "0 1 * * *"   # 09:00 SGT daily
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # Read-only: renders the paper book, never writes state (the 5-min scan
+      # workflow owns closing positions and committing state.json back).
+      - name: Send paper report
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PAPER_HOLD_HOURS: ${{ vars.PAPER_HOLD_HOURS }}
+          PAPER_NOTIONAL_USD: ${{ vars.PAPER_NOTIONAL_USD }}
+        run: python main.py report

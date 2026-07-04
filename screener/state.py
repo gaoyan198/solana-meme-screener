@@ -27,6 +27,7 @@ class State:
     def __init__(self) -> None:
         self.alerted: dict[str, float] = {}                  # address -> last alert ts
         self.history: dict[str, list[list[float]]] = {}      # address -> [[ts, holders], ...]
+        self.paper: dict = {"open": {}, "closed": []}        # paper-trading ledger (see paper.py)
         self.load()
 
     def load(self) -> None:
@@ -35,13 +36,17 @@ class State:
                 data = json.loads(STATE_FILE.read_text())
                 self.alerted = data.get("alerted", {})
                 self.history = data.get("history", {})
+                paper = data.get("paper") or {}
+                self.paper = {"open": paper.get("open", {}), "closed": paper.get("closed", [])}
             except Exception as e:  # noqa: BLE001
                 log.warning("Could not read state file: %s", e)
         self._prune()
 
     def _prune(self) -> None:
         now = time.time()
-        ttl = config.alert_cooldown_hours * 3600
+        # Dedup entries must outlive the paper holding period, otherwise a coin
+        # could be re-alerted (and double-papered) while its position is open.
+        ttl = max(config.alert_cooldown_hours, config.paper_hold_hours) * 3600
         self.alerted = {a: ts for a, ts in self.alerted.items() if now - ts < ttl}
         hist_ttl = _HISTORY_TTL_HOURS * 3600
         self.history = {
@@ -82,7 +87,10 @@ class State:
     def save(self) -> None:
         self._prune()
         STATE_FILE.write_text(
-            json.dumps({"alerted": self.alerted, "history": self.history}, indent=2)
+            json.dumps(
+                {"alerted": self.alerted, "history": self.history, "paper": self.paper},
+                indent=2,
+            )
         )
 
 

@@ -1,8 +1,9 @@
 """Entry point.
 
 Usage:
-  python main.py            # one scan cycle: score candidates, alert new hits
+  python main.py            # one scan cycle: score, alert new hits, tend paper book
   python main.py table      # run the pipeline, print the full ranked table, no alerts
+  python main.py report     # send the paper-trading book (P&L vs SOL/BTC) to Telegram
   python main.py dump [MINT]# print raw GMGN JSON to calibrate field mappings
   python main.py test-alert # send a dummy Telegram message to check wiring
 """
@@ -14,7 +15,7 @@ import sys
 from screener.config import config
 from screener.gmgn import client
 from screener.log import get_logger
-from screener import notifier
+from screener import notifier, paper
 from screener.scanner import scan
 from screener.state import state
 
@@ -34,10 +35,21 @@ def run_scan(alert: bool = True) -> None:
             continue
         notifier.send_hit(sc)
         state.mark_alerted(sc.snap.address)
+        paper.record(sc)
         new += 1
+    if alert:
+        paper.backfill_alerted()
+        paper.close_due()
     state.save()
     log.info("Scan complete: %d hit(s) ≥ %.0f, %d new alert(s) sent.",
              len(hits), config.min_score, new)
+
+
+def run_report() -> None:
+    """Read-only: renders the book without closing positions (scan's job)."""
+    config.validate()
+    notifier.send_text(paper.report_text())
+    log.info("Paper report sent.")
 
 
 def dump(argv: list[str]) -> None:
@@ -63,6 +75,8 @@ def main() -> None:
         notifier.send_text("✅ solana-meme-screener wired up correctly.")
     elif argv and argv[0] == "table":
         run_scan(alert=False)
+    elif argv and argv[0] == "report":
+        run_report()
     else:
         run_scan()
 

@@ -41,9 +41,21 @@ pip install -r requirements.txt
 cp .env.example .env       # fill in Telegram token + chat id
 python main.py table       # full ranked table, no alerts — use this to calibrate
 python main.py             # one scan cycle, alerts new hits ≥ MIN_SCORE
+python main.py report      # send the paper-trading book to Telegram
 python main.py dump        # raw GMGN JSON, for when they rename fields
 python main.py test-alert  # check Telegram wiring
 ```
+
+## Paper trading
+
+Every alert automatically opens a hypothetical **$100** position at the alert
+price, with SOL and BTC spot recorded as benchmarks (CoinGecko). The 5-min
+scan cron closes each position after **72h** at the then-current Dexscreener
+price — or at **$0** if the pair is gone / liquidity has drained below $500,
+which is what actually happens to rugs. A daily report (09:00 SGT) shows every
+flagged coin, its return over the holding window, and what the same $100 in
+SOL or BTC would have done. This is the built-in reality check: if the book
+doesn't beat SOL after a few weeks of alerts, the screen has no edge.
 
 ## Deploy (GitHub Actions, every 5 min)
 
