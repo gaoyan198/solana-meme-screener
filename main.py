@@ -33,7 +33,11 @@ def run_scan(alert: bool = True) -> None:
         if new >= config.max_alerts_per_scan:
             log.info("Alert cap reached; %s (%.0f) suppressed", sc.snap.symbol, sc.total)
             continue
-        notifier.send_hit(sc)
+        # Only mark alerted on confirmed delivery — a rejected send (e.g. user
+        # hasn't /started the bot yet) is retried on the next scan.
+        if not notifier.send_hit(sc):
+            log.warning("Alert for %s not delivered — will retry next scan", sc.snap.symbol)
+            continue
         state.mark_alerted(sc.snap.address)
         paper.record(sc)
         new += 1

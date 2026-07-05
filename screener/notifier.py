@@ -52,28 +52,53 @@ def _fmt(sc: Scored) -> str:
     return "\n".join(lines)
 
 
-def send_hit(sc: Scored) -> None:
-    _send(_fmt(sc))
+def send_hit(sc: Scored) -> bool:
+    return _send(_fmt(sc))
 
 
-def send_text(text: str) -> None:
-    _send(text)
+def send_text(text: str) -> bool:
+    return _send(text)
 
 
-def _send(text: str) -> None:
+def _send(text: str) -> bool:
+    """True only if Telegram confirmed delivery — callers use this to retry.
+
+    Telegram rejects messages with HTTP 400/403 (chat not found until the user
+    /starts the bot, Markdown entity errors, blocked bot); those must not be
+    swallowed as success. Markdown parse errors are retried as plain text.
+    """
     if not (config.telegram_bot_token and config.telegram_chat_id):
         log.info("(telegram not configured) %s", text.replace("\n", " ")[:160])
-        return
+        return False
+    ok, desc = _post(text, markdown=True)
+    if ok:
+        return True
+    if "parse" in desc.lower() or "entit" in desc.lower():
+        log.warning("Markdown rejected (%s) — resending plain", desc)
+        ok, desc = _post(text, markdown=False)
+        if ok:
+            return True
+    log.error("Telegram rejected message: %s", desc)
+    return False
+
+
+def _post(text: str, markdown: bool) -> tuple[bool, str]:
+    payload = {
+        "chat_id": config.telegram_chat_id,
+        "text": text,
+        "disable_web_page_preview": True,
+    }
+    if markdown:
+        payload["parse_mode"] = "Markdown"
     try:
-        requests.post(
+        r = requests.post(
             f"https://api.telegram.org/bot{config.telegram_bot_token}/sendMessage",
-            json={
-                "chat_id": config.telegram_chat_id,
-                "text": text,
-                "parse_mode": "Markdown",
-                "disable_web_page_preview": True,
-            },
+            json=payload,
             timeout=10,
         )
+        body = r.json() if r.headers.get("content-type", "").startswith("application/json") else {}
+        if r.status_code == 200 and body.get("ok"):
+            return True, ""
+        return False, str(body.get("description") or f"HTTP {r.status_code}")
     except Exception as e:  # noqa: BLE001
-        log.warning("Telegram send failed: %s", e)
+        return False, str(e)
