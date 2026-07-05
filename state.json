@@ -7,7 +7,8 @@
     "A8wXmAgVy3peeHtifXNvYUUirGdNu4ezJoDno9trpump": 1783260711.004153,
     "6mtSN7abLH37t5rBs3PCr2tn24Dr59EwTpfFrhHHpump": 1783262923.1053388,
     "B6MtubZSVPqekiNBmPjFPWRnP1ee4BwCHkmWbsMRpump": 1783273317.8658216,
-    "4Q3sPso7EpgCRiwXt594Dbs6We6ieineQ5gACTWppump": 1783274581.7212708
+    "4Q3sPso7EpgCRiwXt594Dbs6We6ieineQ5gACTWppump": 1783274581.7212708,
+    "6kMcUKLubWNtXSH33aisVF3cQ2otD9Fz7L8E7U2ipump": 1783277280.0817444
   },
   "history": {
     "DLAHMrDSzThzBRFQdi9CYtH1aej9hALWexMM6Bnnpump": [
@@ -110,10 +111,6 @@
     ],
     "ChJqQSFK1JUPCaoGrtKM1Nm5k29ZdbHQ8kiVNuhppump": [
       [
-        1783269309.3565416,
-        1237.0
-      ],
-      [
         1783269995.5384662,
         1222.0
       ],
@@ -204,6 +201,10 @@
       [
         1783276958.2029908,
         1191.0
+      ],
+      [
+        1783277258.2561688,
+        1195.0
       ]
     ],
     "2XdaoJDb8LbjwMDSSRmKnPHRwinf62x91ocJjoF7pump": [
@@ -710,10 +711,6 @@
     ],
     "5qLt7Mvg9Qj8yGXmqx7mGWAPC2mLCJssfQcx43aBpump": [
       [
-        1783269304.8690188,
-        652.0
-      ],
-      [
         1783269992.5600784,
         651.0
       ],
@@ -804,13 +801,13 @@
       [
         1783276955.8534214,
         666.0
+      ],
+      [
+        1783277255.91346,
+        669.0
       ]
     ],
     "6mUXxdGMtxKDSw6zXiarQ5mgP3UC1LBzu9LjgXhFpump": [
-      [
-        1783269303.8186133,
-        762.0
-      ],
       [
         1783269991.0927653,
         762.0
@@ -902,6 +899,10 @@
       [
         1783276954.1421201,
         780.0
+      ],
+      [
+        1783277254.2155492,
+        775.0
       ]
     ],
     "H6QG1XUwKpXB94kJUzkcn4GaD3yzYTcm7xbBf4aopump": [
@@ -1646,10 +1647,6 @@
     ],
     "5XFYxNg16y2KmEZLARWCCktuiA5QGD8ihJXu5xHapump": [
       [
-        1783269302.6907444,
-        1042.0
-      ],
-      [
         1783269990.1934493,
         1031.0
       ],
@@ -1740,6 +1737,10 @@
       [
         1783276952.3865707,
         911.0
+      ],
+      [
+        1783277252.34027,
+        931.0
       ]
     ],
     "29pNSDP2nSzQVMXjqc5HtLmnu4yK7JfZuKP9Lb3Epump": [
@@ -1829,10 +1830,6 @@
       ]
     ],
     "7M8hqS3D4A8XEBxrARrWTNrNVLRHwvFrCoeUbheUpump": [
-      [
-        1783268708.8391032,
-        1038.0
-      ],
       [
         1783269007.426101,
         1026.0
@@ -1924,6 +1921,10 @@
       [
         1783276956.6334782,
         1011.0
+      ],
+      [
+        1783277256.6876843,
+        1012.0
       ]
     ],
     "8MMni3h2maYGNvM7QCUoALvAHWP8WgF8cX6ckumHpump": [
@@ -1949,10 +1950,6 @@
       ]
     ],
     "A8wXmAgVy3peeHtifXNvYUUirGdNu4ezJoDno9trpump": [
-      [
-        1783269306.4226646,
-        715.0
-      ],
       [
         1783269994.7359676,
         722.0
@@ -2044,6 +2041,10 @@
       [
         1783276957.4335904,
         952.0
+      ],
+      [
+        1783277257.47113,
+        969.0
       ]
     ],
     "HFVgPKaHR6wt79BMzg9DSzMnqCsrzg57jazv7xkxpump": [
@@ -2220,6 +2221,10 @@
       [
         1783276959.5029867,
         250.0
+      ],
+      [
+        1783277260.8300304,
+        252.0
       ]
     ],
     "AY7d9QufCU9b4RdEhCxAMDZBfxfuZ1NExaENT26hpump": [
@@ -2492,6 +2497,10 @@
       [
         1783276954.9891715,
         1397.0
+      ],
+      [
+        1783277255.0922697,
+        1433.0
       ]
     ],
     "4Q3sPso7EpgCRiwXt594Dbs6We6ieineQ5gACTWppump": [
@@ -2534,6 +2543,10 @@
       [
         1783276951.5846553,
         2523.0
+      ],
+      [
+        1783277251.4608815,
+        2510.0
       ]
     ],
     "6kMcUKLubWNtXSH33aisVF3cQ2otD9Fz7L8E7U2ipump": [
@@ -2552,6 +2565,10 @@
       [
         1783276953.265783,
         1160.0
+      ],
+      [
+        1783277253.1656697,
+        1195.0
       ]
     ],
     "SoL3gnJgRZQcWCTinaAk4DyyuyhAW932LmY6zvcWKt6": [
@@ -2568,6 +2585,10 @@
       [
         1783276662.7089944,
         114.0
+      ],
+      [
+        1783277259.563737,
+        135.0
       ]
     ],
     "4tUQ6XKsVaaDMrTkHvYFh1z6sifjoQ5wUdPGDiHwpump": [
@@ -2592,6 +2613,20 @@
         "sol_entry": 81.09,
         "btc_entry": 62636,
         "peak_price": 0.0001683
+      },
+      "6kMcUKLubWNtXSH33aisVF3cQ2otD9Fz7L8E7U2ipump": {
+        "symbol": "BULLDERS",
+        "score": 49.3,
+        "track": "momentum",
+        "entry_ts": 1783277280.2844548,
+        "entry_price": 0.0001652,
+        "entry_mcap": 165237.0,
+        "tp_price": 0.0003304,
+        "sl_price": 9.912e-05,
+        "pair": "8VGvStvKB1KrYEFobfyAA5x3VWQChNNYSfjp8NeMJe3c",
+        "sol_entry": 81.09,
+        "btc_entry": 62688,
+        "peak_price": 0.0001743
       }
     },
     "closed": [
