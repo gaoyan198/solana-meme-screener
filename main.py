@@ -52,8 +52,11 @@ def run_scan(alert: bool = True) -> None:
 def run_report() -> None:
     """Read-only: renders the book without closing positions (scan's job)."""
     config.validate()
-    notifier.send_text(paper.report_text())
-    log.info("Paper report sent.")
+    if notifier.send_text(paper.report_text()):
+        log.info("Paper report sent.")
+    else:
+        log.error("Paper report NOT delivered.")
+        raise SystemExit(1)
 
 
 def dump(argv: list[str]) -> None:

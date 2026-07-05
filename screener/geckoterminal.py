@@ -28,15 +28,21 @@ def ath_price(pool_address: str) -> float | None:
         ("minute", {"aggregate": 5, "limit": 1000, "currency": "usd"}),
         ("hour", {"aggregate": 1, "limit": 1000, "currency": "usd"}),
     ):
-        try:
-            r = requests.get(f"{_BASE}/{pool_address}/ohlcv/{timeframe}",
-                             params=params, timeout=15)
-            if r.status_code == 404:
-                continue
-            r.raise_for_status()
-            candles = (((r.json() or {}).get("data") or {}).get("attributes") or {}).get("ohlcv_list") or []
-            highs += [float(c[2]) for c in candles if isinstance(c, (list, tuple)) and len(c) > 2 and c[2]]
-        except Exception as e:  # noqa: BLE001
-            log.warning("GeckoTerminal %s failed for %s: %s", timeframe, pool_address[:8], e)
+        for attempt in (1, 2):
+            try:
+                r = requests.get(f"{_BASE}/{pool_address}/ohlcv/{timeframe}",
+                                 params=params, timeout=15)
+                if r.status_code == 404:
+                    break
+                if r.status_code == 429 and attempt == 1:
+                    time.sleep(3)
+                    continue
+                r.raise_for_status()
+                candles = (((r.json() or {}).get("data") or {}).get("attributes") or {}).get("ohlcv_list") or []
+                highs += [float(c[2]) for c in candles if isinstance(c, (list, tuple)) and len(c) > 2 and c[2]]
+                break
+            except Exception as e:  # noqa: BLE001
+                log.warning("GeckoTerminal %s failed for %s: %s", timeframe, pool_address[:8], e)
+                break
         time.sleep(0.25)
     return max(highs) if highs else None

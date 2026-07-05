@@ -211,7 +211,8 @@ def _fmt_pos(mint: str, pos: dict, exit_price: float | None, sol_now: float | No
 def _usd_short(v: float | None) -> str:
     if v is None:
         return "?"
-    return f"${v / 1e6:.2f}M" if v >= 1e6 else f"${v / 1e3:.0f}k"
+    # 9.95e5 threshold so 999.7k renders as $1.00M, not $1000k
+    return f"${v / 1e6:.2f}M" if v >= 9.95e5 else f"${v / 1e3:.0f}k"
 
 
 def report_text() -> str:
