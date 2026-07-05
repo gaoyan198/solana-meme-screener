@@ -49,10 +49,6 @@
     ],
     "Bm5hU3iYP9syzZHte1Ubv5GjSkMjFsCqaVyWcBdpump": [
       [
-        1783173929.3970585,
-        2902.0
-      ],
-      [
         1783178136.0625806,
         2947.0
       ],
@@ -147,6 +143,10 @@
         1783235033.297739,
 >>>>>>> Stashed changes
         2755.0
+      ],
+      [
+        1783235248.8396802,
+        2747.0
       ]
     ],
     "FJSKRhn5ZGtv66HtgaqVY9oNsV2KeynngLTq6PX4pump": [
@@ -275,6 +275,10 @@
       [
         1783234655.5686638,
         721.0
+      ],
+      [
+        1783235252.3156984,
+        724.0
       ]
     ],
     "GaZb3DE2U3Jcjx7ddAVwobsBKnCaDoJWLbzTvJYhpump": [
@@ -855,10 +859,10 @@
 <<<<<<< Updated upstream
         1783234947.3725834,
         696.0
-=======
-        1783235031.430203,
-        695.0
->>>>>>> Stashed changes
+      ],
+      [
+        1783235248.0195782,
+        698.0
       ]
     ],
     "J3K3fEaeGcBPk9pA4y1bZAnu7QireYvwBhxwQGmWbonk": [
@@ -1079,6 +1083,10 @@
       [
         1783230979.5773642,
         297.0
+      ],
+      [
+        1783235254.4106681,
+        301.0
       ]
     ],
     "6ke1Spo4n6H2j3FRjAkusngLv6ovm9mibgPa9wHSpump": [
@@ -1263,6 +1271,10 @@
       [
         1783234953.421102,
         444.0
+      ],
+      [
+        1783235253.0783935,
+        462.0
       ]
     ],
     "9bW5KYuuutJ8usQ8gzQ7J5fSzMWCuQ8qPkvRNh8ypump": [
@@ -1325,6 +1337,10 @@
       [
         1783234956.0034542,
         1086.0
+      ],
+      [
+        1783235258.444327,
+        1084.0
       ]
     ],
     "Atf32eKbsbUZtj4kb5U3QJEtHrmc7L9Gjqv3qjNKbuLL": [
@@ -1402,10 +1418,10 @@
 <<<<<<< Updated upstream
         1783234951.3640344,
         733.0
-=======
-        1783235039.459841,
-        731.0
->>>>>>> Stashed changes
+      ],
+      [
+        1783235250.9920943,
+        726.0
       ]
     ],
     "6RsJsPiTjQgwUYcNo43DCbPJoWacuvFrRyQPco9opump": [
@@ -1496,10 +1512,10 @@
 <<<<<<< Updated upstream
         1783234950.5492835,
         523.0
-=======
-        1783235037.4604921,
-        526.0
->>>>>>> Stashed changes
+      ],
+      [
+        1783235250.1110258,
+        532.0
       ]
     ],
     "4yzx2ZzdoawEUrP25pXcNZi8AN98m2yEbPaba8tnpump": [
@@ -1553,10 +1569,10 @@
 <<<<<<< Updated upstream
         1783234954.7947223,
         1452.0
-=======
-        1783235030.538882,
-        1451.0
->>>>>>> Stashed changes
+      ],
+      [
+        1783235256.2596953,
+        1462.0
       ]
     ],
     "9JBsCt8wVG4uaHuXJNeH1Khss7VXVHH94F52WGg5pump": [
@@ -1575,6 +1591,10 @@
       [
         1783232802.5298636,
         176.0
+      ],
+      [
+        1783235257.0368824,
+        174.0
       ]
     ],
     "H6QG1XUwKpXB94kJUzkcn4GaD3yzYTcm7xbBf4aopump": [
@@ -1609,6 +1629,10 @@
       [
         1783234956.7888656,
         299.0
+      ],
+      [
+        1783235259.2040906,
+        298.0
       ]
     ],
     "7iCb5PWhnfeHLwpCZZ9bozNNaQYiFB7dkUyoVNDvpump": [
@@ -1654,7 +1678,7 @@
         "sl_price": 8.957999999999999e-05,
         "sol_entry": 82.38,
         "btc_entry": 63076,
-        "peak_price": 0.0002111
+        "peak_price": 0.0002159
       }
     },
     "closed": [
