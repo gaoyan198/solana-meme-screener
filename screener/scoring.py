@@ -72,9 +72,16 @@ def _award(fraction: float | None, max_pts: float) -> float:
 
 # --- stage 1: hard gates ---------------------------------------------------
 
-def gate(s: Snapshot) -> str | None:
-    """Reason the token is rejected, or None if it passes."""
+def gate(s: Snapshot, strict: bool = False) -> str | None:
+    """Reason the token is rejected, or None if it passes.
+
+    strict=True is the post-enrichment re-gate: by then Dexscreener has had its
+    say, so an *unknown* age is disqualifying — a fresh-coin screener must be
+    able to prove freshness, not assume it (the "niglet" revival lesson).
+    """
     age = s.age_hours
+    if strict and age is None:
+        return "age unknown after enrichment"
     if age is not None and age < config.min_token_age_hours:
         return f"too new ({age:.2f}h)"
     if age is not None and age > config.max_token_age_hours:

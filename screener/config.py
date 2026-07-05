@@ -41,6 +41,9 @@ class Config:
     # "Too late" gate: if it already did this in the last hour, the run happened.
     max_h1_gain_pct: float = field(default_factory=lambda: _float("MAX_H1_GAIN_PCT", 200))
     min_txns_m5: int = field(default_factory=lambda: _int("MIN_TXNS_M5", 10))
+    # "Already dumped" gate: reject alerts trading below this fraction of the
+    # coin's lifetime high — a flat chart deep under ATH is a corpse.
+    min_pct_of_ath: float = field(default_factory=lambda: _float("MIN_PCT_OF_ATH", 0.30))
 
     # --- scoring / alerting ---
     min_score: float = field(default_factory=lambda: _float("MIN_SCORE", 70))

@@ -40,7 +40,7 @@ def _fmt(sc: Scored) -> str:
         f"• MCAP *{mcap}* · Liq *{liq}* · Age *{age}* · Holders *{holders}*",
     ]
     if s.pair_address and s.price_usd:
-        ath = ath_price(s.pair_address)
+        ath = s.ath_price_usd or ath_price(s.pair_address)
         if ath and ath > 0:
             ath_mult = ath / s.price_usd
             ath_mcap = paper._usd_short(s.mcap_usd * ath_mult) if s.mcap_usd else "?"

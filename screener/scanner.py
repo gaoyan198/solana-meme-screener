@@ -10,7 +10,8 @@ from __future__ import annotations
 import time
 
 from .config import config
-from .dexscreener import best_pair
+from .dexscreener import oldest_created_ts, token_pairs
+from .geckoterminal import ath_price
 from .gmgn import client
 from .log import get_logger
 from .models import Snapshot, first, num
@@ -85,15 +86,20 @@ def scan() -> list[Scored]:
                 queue.append(snap)
     enriched: list[Snapshot] = []
     for snap in queue[: config.max_enrich]:
-        pair = best_pair(snap.address)
-        if pair:
-            snap.merge_pair(pair)
+        pairs = token_pairs(snap.address)
+        if pairs:
+            snap.merge_pair(max(pairs, key=lambda p: ((p.get("liquidity") or {}).get("usd") or 0)))
+            # True age = the OLDEST pool ever, so a fresh revival pool on a
+            # months-dead token can't masquerade as a new launch.
+            oldest = oldest_created_ts(pairs)
+            if oldest:
+                snap.created_ts = min(snap.created_ts or oldest, oldest)
         rug = rug_summary(snap.address)
         if rug:
             snap.rug_score_norm = num(rug, "score_normalised", "score_normalized")
-        reason = gate(snap)
+        reason = gate(snap, strict=True)
         if reason:
-            log.debug("%s dropped post-enrich: %s", snap.symbol, reason)
+            log.info("%s dropped post-enrich: %s", snap.symbol, reason)
             continue
         if snap.holders is not None:
             state.record_holders(snap.address, snap.holders)
@@ -131,4 +137,18 @@ def scan() -> list[Scored]:
         if sc not in hits and sc.momentum_total >= config.momentum_min_score:
             sc.track = "momentum"
             hits.append(sc)
-    return hits
+
+    # Final gate, only on would-be alerts (GeckoTerminal budget): a coin far
+    # below its lifetime high already pumped and finished dumping — the flat
+    # chart that scores well on "timing" is a corpse, not a coil.
+    fresh: list[Scored] = []
+    for sc in hits:
+        s = sc.snap
+        if s.pair_address and s.price_usd:
+            s.ath_price_usd = ath_price(s.pair_address)
+            if s.ath_price_usd and s.price_usd < config.min_pct_of_ath * s.ath_price_usd:
+                log.info("%s rejected: at %.0f%% of ATH — already pumped & dumped",
+                         s.symbol, 100 * s.price_usd / s.ath_price_usd)
+                continue
+        fresh.append(sc)
+    return fresh

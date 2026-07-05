@@ -46,6 +46,7 @@ jobs:
           MIN_HOLDERS: ${{ vars.MIN_HOLDERS }}
           MAX_TOP10_RATE: ${{ vars.MAX_TOP10_RATE }}
           MAX_H1_GAIN_PCT: ${{ vars.MAX_H1_GAIN_PCT }}
+          MIN_PCT_OF_ATH: ${{ vars.MIN_PCT_OF_ATH }}
           MAX_ALERTS_PER_SCAN: ${{ vars.MAX_ALERTS_PER_SCAN }}
           ALERT_COOLDOWN_HOURS: ${{ vars.ALERT_COOLDOWN_HOURS }}
           PAPER_HOLD_HOURS: ${{ vars.PAPER_HOLD_HOURS }}

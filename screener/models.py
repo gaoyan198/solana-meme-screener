@@ -66,6 +66,8 @@ class Snapshot:
     change_h1_pct: float | None = None
     # most liquid pool address (filled by merge_pair; used for OHLCV/ATH lookups)
     pair_address: str | None = None
+    # lifetime high (filled by scanner's final gate; reused by the alert text)
+    ath_price_usd: float | None = None
     # deep smart-money check (filled by scanner for top candidates)
     deep_checked: bool = False
     smart_holding: int = 0

@@ -16,16 +16,29 @@ log = get_logger("dexs")
 _BASE = "https://api.dexscreener.com/latest/dex/tokens"
 
 
-def best_pair(mint: str) -> dict | None:
-    """The most liquid Solana pair for a mint, or None."""
+def token_pairs(mint: str) -> list[dict]:
+    """All Solana pairs for a mint. The full list matters: a revived dead coin
+    has a fresh, liquid pool AND a months-old original pool — true token age
+    is the OLDEST pool's creation, not the newest."""
     try:
         r = requests.get(f"{_BASE}/{mint}", timeout=15)
         r.raise_for_status()
         pairs = (r.json() or {}).get("pairs") or []
     except Exception as e:  # noqa: BLE001
         log.warning("Dexscreener failed for %s: %s", mint[:8], e)
-        return None
-    sol_pairs = [p for p in pairs if isinstance(p, dict) and p.get("chainId") == "solana"]
+        return []
+    return [p for p in pairs if isinstance(p, dict) and p.get("chainId") == "solana"]
+
+
+def best_pair(mint: str) -> dict | None:
+    """The most liquid Solana pair for a mint, or None."""
+    sol_pairs = token_pairs(mint)
     if not sol_pairs:
         return None
     return max(sol_pairs, key=lambda p: ((p.get("liquidity") or {}).get("usd") or 0))
+
+
+def oldest_created_ts(pairs: list[dict]) -> float | None:
+    """Earliest pool creation (unix seconds) across pairs — true token age."""
+    created = [p["pairCreatedAt"] / 1000 for p in pairs if p.get("pairCreatedAt")]
+    return min(created) if created else None
