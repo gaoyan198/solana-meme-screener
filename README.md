@@ -21,11 +21,15 @@ honeypot flag, not already up >200% in the last hour, ≥ 10 txns in the last
 
 | Component | Max | What it measures |
 |---|---|---|
-| Momentum | 25 | 5-min volume run-rate vs 1h baseline (accel ≥ 3× = full marks); buy share of 5-min txns |
-| Holder growth | 20 | holders/hour since launch; holder growth between scans (state file) |
-| Smart money | 25 | GMGN `smart_degen` + `renowned` wallets holding; how many bought < 2h ago |
+| Momentum | 20 | 5-min volume run-rate vs 1h baseline (accel ≥ 3× = full marks); buy share of 5-min txns |
+| Holder growth | 15 | holders/hour since launch; holder growth between scans (state file) |
+| Smart money | 35 | GMGN `smart_degen` + `renowned` wallets **holding** (full marks ≥ 6 wallets — insider-crowding thesis); buys < 2h ago; net smart flow (accumulating vs distributing) |
 | Safety | 20 | top-10 %, insider ("rat trader") %, RugCheck risk score, mint renounced, LP burn |
 | Entry timing | 10 | full marks for "coiling" (−20%…+50% on 1h); fades to 0 by +150% (you missed it) or −50% (knife) |
+
+Smart money is deliberately the heaviest weight (v2, 2026-07-05): several smart
+wallets still holding a young token acts like an insider signal. The net-flow
+term guards the thesis's failure mode — KOLs crowded in but dumping on the hype.
 
 Missing data earns *half* credit for that sub-part — unknowns can't max a
 token out, but can't zero out a strong one either.

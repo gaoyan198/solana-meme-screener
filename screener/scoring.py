@@ -11,11 +11,17 @@ Two stages:
    price variation) plus the distribution checks their own guides tell users
    to do by hand:
 
-     Momentum       25  volume acceleration + buy/sell ratio
-     Holder growth  20  holders/hour since launch + growth since last scan
-     Smart money    25  GMGN smart wallets in the token + buy recency
+     Momentum       20  volume acceleration + buy/sell ratio
+     Holder growth  15  holders/hour since launch + growth since last scan
+     Smart money    35  KOL/smart wallets HOLDING (insider-crowding thesis),
+                        buy recency, and net smart flow (holding ≠ dumping)
      Safety         20  top-10 %, insider %, RugCheck, renounce/burn
      Entry timing   10  "coiling" beats "already ran"
+
+Smart money is the heaviest component by design (v2, 2026-07-05): several
+smart wallets *still holding* a young token behaves like an insider signal.
+The net-flow term guards the failure mode of that thesis — KOLs crowded in
+but actively distributing into the hype.
 
 Missing data earns *half* credit for that sub-part — unknowns can't max a
 token out, but they don't zero out an otherwise strong one either.
@@ -89,34 +95,44 @@ def gate(s: Snapshot) -> str | None:
 # --- stage 2: components ---------------------------------------------------
 
 def _momentum(s: Snapshot) -> Component:
-    accel_pts = _award(_ramp(s.vol_accel, 0.8, 3.0), 15)
-    ratio_pts = _award(_ramp(s.buy_ratio_m5, 0.50, 0.75), 10)
+    accel_pts = _award(_ramp(s.vol_accel, 0.8, 3.0), 12)
+    ratio_pts = _award(_ramp(s.buy_ratio_m5, 0.50, 0.75), 8)
     accel = f"{s.vol_accel:.1f}×" if s.vol_accel is not None else "?"
     ratio = f"{s.buy_ratio_m5:.0%}" if s.buy_ratio_m5 is not None else "?"
-    return Component("Momentum", accel_pts + ratio_pts, 25,
+    return Component("Momentum", accel_pts + ratio_pts, 20,
                      f"vol accel {accel}, buys {ratio} of 5m txns")
 
 
 def _holder_growth(s: Snapshot, rate_per_hour: float | None) -> Component:
-    base_pts = _award(_ramp(s.holders_per_hour, 20, 150), 10)
-    delta_pts = _award(_ramp(rate_per_hour, 0.05, 0.30), 10)
+    base_pts = _award(_ramp(s.holders_per_hour, 20, 150), 7.5)
+    delta_pts = _award(_ramp(rate_per_hour, 0.05, 0.30), 7.5)
     hph = f"{s.holders_per_hour:.0f}/h" if s.holders_per_hour is not None else "?"
     delta = f"{rate_per_hour:+.0%}/h" if rate_per_hour is not None else "first sighting"
-    return Component("Holders", base_pts + delta_pts, 20, f"{hph} since launch, {delta}")
+    return Component("Holders", base_pts + delta_pts, 15, f"{hph} since launch, {delta}")
 
 
 def _smart_money(s: Snapshot) -> Component:
-    hint_pts = _award(_ramp(s.smart_hint, 1, 5), 10)
+    hint_pts = _award(_ramp(s.smart_hint, 1, 5), 8)
+    # Net smart flow: are the smart wallets accumulating or distributing?
+    nb, ns = s.smart_buys_h1, s.smart_sells_h1
+    flow = None
+    if nb is not None or ns is not None:
+        nb, ns = nb or 0, ns or 0
+        flow = nb / (nb + ns) if (nb + ns) > 0 else None
+    flow_pts = _award(_ramp(flow, 0.5, 0.9), 5)
+    flow_txt = f"{flow:.0%} of smart txns are buys" if flow is not None else "flow ?"
     if s.deep_checked:
-        hold_pts = 10 * (_ramp(s.smart_holding, 1, 4) or 0)
-        recent_pts = 5 * (_ramp(s.smart_recent_buys, 1, 3) or 0)
-        detail = (f"{s.smart_hint:.0f} flagged on row; {s.smart_holding} smart wallets "
-                  f"holding, {s.smart_recent_buys} bought <2h")
+        # Holding depth is the insider-crowding thesis — full marks needs a
+        # genuine crowd (6+ wallets), not one lucky sniper.
+        hold_pts = 15 * (_ramp(s.smart_holding, 2, 6) or 0)
+        recent_pts = 7 * (_ramp(s.smart_recent_buys, 1, 3) or 0)
+        detail = (f"{s.smart_holding} smart wallets holding, "
+                  f"{s.smart_recent_buys} bought <2h, {flow_txt}")
     else:
         # Outside the deep-check budget this scan — neutral credit, not zero.
-        hold_pts, recent_pts = 5.0, 2.5
-        detail = f"{s.smart_hint:.0f} flagged on row (deep check skipped)"
-    return Component("Smart money", hint_pts + hold_pts + recent_pts, 25, detail)
+        hold_pts, recent_pts = 7.5, 3.5
+        detail = f"{s.smart_hint:.0f} flagged on row (deep check skipped), {flow_txt}"
+    return Component("Smart money", hint_pts + flow_pts + hold_pts + recent_pts, 35, detail)
 
 
 def _safety(s: Snapshot) -> Component:
