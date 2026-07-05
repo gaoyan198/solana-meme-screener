@@ -110,10 +110,6 @@
     ],
     "ChJqQSFK1JUPCaoGrtKM1Nm5k29ZdbHQ8kiVNuhppump": [
       [
-        1783266908.8647106,
-        1234.0
-      ],
-      [
         1783267210.518743,
         1235.0
       ],
@@ -204,6 +200,10 @@
       [
         1783274560.0650978,
         1179.0
+      ],
+      [
+        1783274859.893411,
+        1182.0
       ]
     ],
     "2XdaoJDb8LbjwMDSSRmKnPHRwinf62x91ocJjoF7pump": [
@@ -514,10 +514,6 @@
     ],
     "5xRRRd1fhGyBY2u31isvkL3rLtYUFXvau3JgkwiKpump": [
       [
-        1783261891.078019,
-        655.0
-      ],
-      [
         1783262186.4226322,
         648.0
       ],
@@ -607,6 +603,10 @@
       ],
       [
         1783274560.9850574,
+        615.0
+      ],
+      [
+        1783274863.7704508,
         615.0
       ]
     ],
@@ -710,10 +710,6 @@
     ],
     "5qLt7Mvg9Qj8yGXmqx7mGWAPC2mLCJssfQcx43aBpump": [
       [
-        1783266904.3297043,
-        649.0
-      ],
-      [
         1783267207.3971915,
         657.0
       ],
@@ -804,13 +800,13 @@
       [
         1783274555.8056812,
         644.0
+      ],
+      [
+        1783274855.5579093,
+        645.0
       ]
     ],
     "6mUXxdGMtxKDSw6zXiarQ5mgP3UC1LBzu9LjgXhFpump": [
-      [
-        1783266905.0350416,
-        758.0
-      ],
       [
         1783267206.05239,
         771.0
@@ -902,6 +898,10 @@
       [
         1783274554.4784968,
         784.0
+      ],
+      [
+        1783274853.77788,
+        789.0
       ]
     ],
     "H6QG1XUwKpXB94kJUzkcn4GaD3yzYTcm7xbBf4aopump": [
@@ -1646,10 +1646,6 @@
     ],
     "5XFYxNg16y2KmEZLARWCCktuiA5QGD8ihJXu5xHapump": [
       [
-        1783266902.8867931,
-        1124.0
-      ],
-      [
         1783267202.6583917,
         1124.0
       ],
@@ -1740,6 +1736,10 @@
       [
         1783274552.633965,
         956.0
+      ],
+      [
+        1783274852.0395007,
+        953.0
       ]
     ],
     "29pNSDP2nSzQVMXjqc5HtLmnu4yK7JfZuKP9Lb3Epump": [
@@ -1829,10 +1829,6 @@
       ]
     ],
     "7M8hqS3D4A8XEBxrARrWTNrNVLRHwvFrCoeUbheUpump": [
-      [
-        1783266906.7873638,
-        1079.0
-      ],
       [
         1783267208.0909324,
         1067.0
@@ -1924,6 +1920,10 @@
       [
         1783274558.2691689,
         1046.0
+      ],
+      [
+        1783274858.4860857,
+        1038.0
       ]
     ],
     "8MMni3h2maYGNvM7QCUoALvAHWP8WgF8cX6ckumHpump": [
@@ -1949,10 +1949,6 @@
       ]
     ],
     "A8wXmAgVy3peeHtifXNvYUUirGdNu4ezJoDno9trpump": [
-      [
-        1783266905.7618246,
-        590.0
-      ],
       [
         1783267206.7150419,
         598.0
@@ -2044,6 +2040,10 @@
       [
         1783274556.6219203,
         897.0
+      ],
+      [
+        1783274857.6938782,
+        907.0
       ]
     ],
     "HFVgPKaHR6wt79BMzg9DSzMnqCsrzg57jazv7xkxpump": [
@@ -2196,6 +2196,10 @@
       [
         1783274562.7687337,
         153.0
+      ],
+      [
+        1783274862.258982,
+        160.0
       ]
     ],
     "AY7d9QufCU9b4RdEhCxAMDZBfxfuZ1NExaENT26hpump": [
@@ -2328,6 +2332,10 @@
       [
         1783274557.3978517,
         285.0
+      ],
+      [
+        1783274856.9230893,
+        282.0
       ]
     ],
     "CMx1EUTXhnUKYF5xYMCSkDmJfvRSD7a4iwayW1DVpump": [
@@ -2362,6 +2370,10 @@
       [
         1783274551.7532964,
         2420.0
+      ],
+      [
+        1783274851.1711276,
+        2429.0
       ]
     ],
     "B6MtubZSVPqekiNBmPjFPWRnP1ee4BwCHkmWbsMRpump": [
@@ -2392,12 +2404,22 @@
       [
         1783274553.4584954,
         1084.0
+      ],
+      [
+        1783274852.9000084,
+        1132.0
       ]
     ],
     "4Q3sPso7EpgCRiwXt594Dbs6We6ieineQ5gACTWppump": [
       [
         1783274564.8187585,
         545.0
+      ]
+    ],
+    "3USoT2bBPYwCUFcU3Muh2EpBr5rDS26sQBGtExnhpump": [
+      [
+        1783274854.6281435,
+        87.0
       ]
     ]
   },
@@ -2415,7 +2437,7 @@
         "pair": "CJnQBvScnAQb8d9bfgDZfoppG6pd22Wj7tRqsDz9p6H4",
         "sol_entry": 81.09,
         "btc_entry": 62636,
-        "peak_price": 0.0001503
+        "peak_price": 0.0001683
       },
       "4Q3sPso7EpgCRiwXt594Dbs6We6ieineQ5gACTWppump": {
         "symbol": "CALF",
