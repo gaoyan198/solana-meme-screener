@@ -50,19 +50,28 @@ jobs:
           PAPER_HOLD_HOURS: ${{ vars.PAPER_HOLD_HOURS }}
           PAPER_TP_PCT: ${{ vars.PAPER_TP_PCT }}
           PAPER_SL_PCT: ${{ vars.PAPER_SL_PCT }}
-        # 11 passes × ~5 min ≈ 55 min. State is committed after every pass so
-        # alert dedup and paper exits survive an interrupted job.
+        # 5-min passes until ~51 min elapsed, exiting cleanly before the 65-min
+        # job timeout can kill a pass midway (slow passes — GMGN 429 backoffs —
+        # made a fixed 11×(pass+300s sleep) overrun it). State is committed
+        # after every pass so alert dedup and paper exits survive anything.
         run: |
           git config user.name "meme-screener"
           git config user.email "meme-screener@users.noreply.github.com"
-          for i in $(seq 1 11); do
-            echo "=== scan pass $i/11 ==="
+          START=$(date +%s); i=0
+          while :; do
+            i=$((i+1))
+            echo "=== scan pass $i ==="
             python main.py || true
             if ! git diff --quiet -- state.json; then
               git add state.json
               git commit -m "chore: update scan state [skip ci]"
-              git pull --rebase origin master || true
+              # If remote moved meanwhile, keep OUR state.json (-X theirs =
+              # the replayed commit during rebase); never strand a mid-rebase.
+              git pull --rebase -X theirs origin master || git rebase --abort || true
               git push || true
             fi
-            [ "$i" -lt 11 ] && sleep 300
+            NOW=$(date +%s)
+            [ $((NOW - START)) -ge 3050 ] && break
+            SLEEP=$((START + i*300 - NOW))
+            [ $SLEEP -gt 0 ] && sleep $SLEEP || true
           done
