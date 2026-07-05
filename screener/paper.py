@@ -114,6 +114,9 @@ def tend() -> None:
             pos["tp_price"], pos["sl_price"] = targets(pos["entry_price"])
         age_h = (now - pos["entry_ts"]) / 3600
         price = _mark(mint)
+        if price > 0:
+            # High-water mark, so the report can show the best X we saw.
+            pos["peak_price"] = max(pos.get("peak_price", pos["entry_price"]), price)
         if price <= 0:
             if age_h >= MIN_RUG_AGE_HOURS:
                 to_close.append((mint, "rug", 0.0))
@@ -169,15 +172,32 @@ def _fmt_pos(mint: str, pos: dict, exit_price: float | None, sol_now: float | No
     if pos.get("backfilled"):
         tags.append("backfilled")
     tag = f" [{', '.join(tags)}]" if tags else ""
+    mult = 1 + r if r is not None else None
+    peak = pos.get("peak_price")
+    peak_mult = peak / pos["entry_price"] if peak and pos["entry_price"] else None
+    peak_txt = f", peak {peak_mult:.2f}x" if peak_mult else ""
+    entry_mcap = pos.get("entry_mcap")
+    mcap_txt = _usd_short(entry_mcap)
+    if entry_mcap and mult is not None:
+        # Supply is ~constant for these tokens, so mcap scales with price.
+        mcap_txt += f" → {_usd_short(entry_mcap * mult)}"
     # Symbol links to GMGN; the raw mint below is tap-to-copy in Telegram.
     line = (
         f"• [{pos['symbol']}](https://gmgn.ai/sol/token/{mint}) "
-        f"*{f'{r:+.0%}' if r is not None else '?'}* "
+        f"*{f'{mult:.2f}x' if mult is not None else '?'}* "
+        f"({f'{r:+.0%}' if r is not None else '?'}{peak_txt}) "
         f"({held_h:.0f}h){tag} · SOL {f'{sol_r:+.1%}' if sol_r is not None else '?'} "
         f"· BTC {f'{btc_r:+.1%}' if btc_r is not None else '?'}\n"
+        f"  alerted @ {mcap_txt} mcap\n"
         f"  `{mint}`"
     )
     return line, r, sol_r, btc_r
+
+
+def _usd_short(v: float | None) -> str:
+    if v is None:
+        return "?"
+    return f"${v / 1e6:.2f}M" if v >= 1e6 else f"${v / 1e3:.0f}k"
 
 
 def report_text() -> str:
@@ -214,7 +234,8 @@ def report_text() -> str:
     btc_val = sum(notional * (1 + (br or 0)) for _, _, br in rets)
     staked = n * notional
     lines.append(
-        f"*Book* ${book_val:,.0f} on ${staked:,.0f} staked (*{(book_val - staked) / staked:+.1%}*)\n"
+        f"*Book* ${book_val:,.0f} on ${staked:,.0f} staked "
+        f"(*{book_val / staked:.2f}x, {(book_val - staked) / staked:+.1%}*)\n"
         f"Same $ in SOL ${sol_val:,.0f} ({(sol_val - staked) / staked:+.1%}) · "
         f"BTC ${btc_val:,.0f} ({(btc_val - staked) / staked:+.1%})"
     )
