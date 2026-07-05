@@ -50,6 +50,10 @@
       [
         1783240381.2716947,
         1165.0
+      ],
+      [
+        1783240681.5818815,
+        1166.0
       ]
     ],
     "ChJqQSFK1JUPCaoGrtKM1Nm5k29ZdbHQ8kiVNuhppump": [
@@ -100,6 +104,10 @@
       [
         1783240385.325577,
         1524.0
+      ],
+      [
+        1783240685.402649,
+        1523.0
       ]
     ],
     "2XdaoJDb8LbjwMDSSRmKnPHRwinf62x91ocJjoF7pump": [
@@ -134,6 +142,10 @@
       [
         1783240383.4875848,
         721.0
+      ],
+      [
+        1783240683.1969273,
+        722.0
       ]
     ],
     "GbqA4P83aRzSmt58QPNzNCNg4Y5AgRcMSE8JHsJdpump": [
@@ -184,6 +196,10 @@
       [
         1783240382.1307771,
         815.0
+      ],
+      [
+        1783240682.4367592,
+        824.0
       ]
     ],
     "Bm5hU3iYP9syzZHte1Ubv5GjSkMjFsCqaVyWcBdpump": [
@@ -234,6 +250,10 @@
       [
         1783240386.062578,
         2685.0
+      ],
+      [
+        1783240686.250591,
+        2694.0
       ]
     ],
     "CGT5pGSnokiTU7CLsfFCnAbvgGMxtZGvQVnrLRKbpump": [
@@ -340,6 +360,10 @@
       [
         1783240392.195683,
         632.0
+      ],
+      [
+        1783240689.1089885,
+        629.0
       ]
     ],
     "ByJW8mYxC63m72t53u3PpmWbuFunw5nHeucFokHzpump": [
@@ -386,6 +410,10 @@
       [
         1783240393.0085459,
         548.0
+      ],
+      [
+        1783240689.8874831,
+        546.0
       ]
     ],
     "5qLt7Mvg9Qj8yGXmqx7mGWAPC2mLCJssfQcx43aBpump": [
@@ -436,6 +464,10 @@
       [
         1783240395.605467,
         478.0
+      ],
+      [
+        1783240692.9034805,
+        477.0
       ]
     ],
     "6mUXxdGMtxKDSw6zXiarQ5mgP3UC1LBzu9LjgXhFpump": [
@@ -482,6 +514,10 @@
       [
         1783240394.6196637,
         717.0
+      ],
+      [
+        1783240691.3552191,
+        712.0
       ]
     ],
     "H6QG1XUwKpXB94kJUzkcn4GaD3yzYTcm7xbBf4aopump": [
@@ -528,6 +564,10 @@
       [
         1783240398.9325752,
         296.0
+      ],
+      [
+        1783240695.763077,
+        291.0
       ]
     ],
     "5z6djd93D4twJD4mi8ST7tdAmA4XmrkovXuJy3mjpump": [
@@ -624,6 +664,10 @@
       [
         1783240387.6287355,
         589.0
+      ],
+      [
+        1783240687.8143325,
+        592.0
       ]
     ],
     "7iCb5PWhnfeHLwpCZZ9bozNNaQYiFB7dkUyoVNDvpump": [
@@ -708,6 +752,10 @@
       [
         1783240393.8030238,
         1080.0
+      ],
+      [
+        1783240692.0632527,
+        1076.0
       ]
     ],
     "4EKJBc4WdeCViLRCfRx5ieFHfPFuBYhV49527GUBpump": [
@@ -724,6 +772,10 @@
       [
         1783240386.8489742,
         325.0
+      ],
+      [
+        1783240687.03999,
+        307.0
       ]
     ],
     "Fbeo1oQ6v4AtErAuSeAPfCy69vo1Rq1voE6uMGhNpump": [
@@ -761,7 +813,7 @@
         "pair": "9pKFgmPdTC12BQzXbi9bd9fJ3ZJyfnyLJYtx8JfzPAgj",
         "sol_entry": 80.53,
         "btc_entry": 62842,
-        "peak_price": 3.143e-05
+        "peak_price": 3.465e-05
       }
     },
     "closed": [
