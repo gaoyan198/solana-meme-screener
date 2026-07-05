@@ -110,10 +110,6 @@
     ],
     "ChJqQSFK1JUPCaoGrtKM1Nm5k29ZdbHQ8kiVNuhppump": [
       [
-        1783268710.3398302,
-        1248.0
-      ],
-      [
         1783269008.0946243,
         1243.0
       ],
@@ -204,6 +200,10 @@
       [
         1783276360.5633316,
         1164.0
+      ],
+      [
+        1783276658.701093,
+        1166.0
       ]
     ],
     "2XdaoJDb8LbjwMDSSRmKnPHRwinf62x91ocJjoF7pump": [
@@ -710,10 +710,6 @@
     ],
     "5qLt7Mvg9Qj8yGXmqx7mGWAPC2mLCJssfQcx43aBpump": [
       [
-        1783268706.4926934,
-        653.0
-      ],
-      [
         1783269005.3328273,
         652.0
       ],
@@ -804,13 +800,13 @@
       [
         1783276357.0921774,
         658.0
+      ],
+      [
+        1783276656.5191314,
+        657.0
       ]
     ],
     "6mUXxdGMtxKDSw6zXiarQ5mgP3UC1LBzu9LjgXhFpump": [
-      [
-        1783268705.051987,
-        767.0
-      ],
       [
         1783269004.2643473,
         763.0
@@ -902,6 +898,10 @@
       [
         1783276354.6349707,
         784.0
+      ],
+      [
+        1783276654.9571145,
+        783.0
       ]
     ],
     "H6QG1XUwKpXB94kJUzkcn4GaD3yzYTcm7xbBf4aopump": [
@@ -1646,10 +1646,6 @@
     ],
     "5XFYxNg16y2KmEZLARWCCktuiA5QGD8ihJXu5xHapump": [
       [
-        1783268702.684902,
-        1068.0
-      ],
-      [
         1783269002.8272047,
         1048.0
       ],
@@ -1740,6 +1736,10 @@
       [
         1783276352.9297898,
         904.0
+      ],
+      [
+        1783276653.243495,
+        908.0
       ]
     ],
     "29pNSDP2nSzQVMXjqc5HtLmnu4yK7JfZuKP9Lb3Epump": [
@@ -1950,10 +1950,6 @@
     ],
     "A8wXmAgVy3peeHtifXNvYUUirGdNu4ezJoDno9trpump": [
       [
-        1783268707.1514533,
-        682.0
-      ],
-      [
         1783269006.7676811,
         697.0
       ],
@@ -2044,6 +2040,10 @@
       [
         1783276357.8825178,
         943.0
+      ],
+      [
+        1783276659.5388842,
+        960.0
       ]
     ],
     "HFVgPKaHR6wt79BMzg9DSzMnqCsrzg57jazv7xkxpump": [
@@ -2212,6 +2212,10 @@
       [
         1783276361.3635542,
         253.0
+      ],
+      [
+        1783276661.3671496,
+        251.0
       ]
     ],
     "AY7d9QufCU9b4RdEhCxAMDZBfxfuZ1NExaENT26hpump": [
@@ -2418,6 +2422,10 @@
       [
         1783276351.2546015,
         2439.0
+      ],
+      [
+        1783276651.2950945,
+        2448.0
       ]
     ],
     "B6MtubZSVPqekiNBmPjFPWRnP1ee4BwCHkmWbsMRpump": [
@@ -2472,6 +2480,10 @@
       [
         1783276355.4521525,
         1222.0
+      ],
+      [
+        1783276655.7324228,
+        1292.0
       ]
     ],
     "4Q3sPso7EpgCRiwXt594Dbs6We6ieineQ5gACTWppump": [
@@ -2506,6 +2518,10 @@
       [
         1783276352.0745986,
         2413.0
+      ],
+      [
+        1783276652.116203,
+        2460.0
       ]
     ],
     "6kMcUKLubWNtXSH33aisVF3cQ2otD9Fz7L8E7U2ipump": [
@@ -2516,6 +2532,10 @@
       [
         1783276353.7148726,
         1099.0
+      ],
+      [
+        1783276654.0698926,
+        1146.0
       ]
     ],
     "SoL3gnJgRZQcWCTinaAk4DyyuyhAW932LmY6zvcWKt6": [
@@ -2528,6 +2548,16 @@
       [
         1783276364.1890876,
         124.0
+      ],
+      [
+        1783276662.7089944,
+        114.0
+      ]
+    ],
+    "4tUQ6XKsVaaDMrTkHvYFh1z6sifjoQ5wUdPGDiHwpump": [
+      [
+        1783276657.9189105,
+        387.0
       ]
     ]
   },
@@ -2546,19 +2576,6 @@
         "sol_entry": 81.09,
         "btc_entry": 62636,
         "peak_price": 0.0001683
-      },
-      "4Q3sPso7EpgCRiwXt594Dbs6We6ieineQ5gACTWppump": {
-        "symbol": "CALF",
-        "score": 52.3,
-        "track": "momentum",
-        "entry_ts": 1783274581.924994,
-        "entry_price": 2.054e-05,
-        "entry_mcap": 20547.54,
-        "tp_price": 4.108e-05,
-        "sl_price": 1.2324e-05,
-        "pair": "CaAV8NhL38KkY9M6Nba2PS56d3RhocPfQknobMU8MLaD",
-        "sol_entry": 81.06,
-        "btc_entry": 62572
       }
     },
     "closed": [
@@ -2680,6 +2697,25 @@
         "exit_reason": "tp",
         "sol_exit": 81.03,
         "btc_exit": 62552
+      },
+      {
+        "symbol": "CALF",
+        "score": 52.3,
+        "track": "momentum",
+        "entry_ts": 1783274581.924994,
+        "entry_price": 2.054e-05,
+        "entry_mcap": 20547.54,
+        "tp_price": 4.108e-05,
+        "sl_price": 1.2324e-05,
+        "pair": "CaAV8NhL38KkY9M6Nba2PS56d3RhocPfQknobMU8MLaD",
+        "sol_entry": 81.06,
+        "btc_entry": 62572,
+        "mint": "4Q3sPso7EpgCRiwXt594Dbs6We6ieineQ5gACTWppump",
+        "exit_ts": 1783276678.6556354,
+        "exit_price": 0.0,
+        "exit_reason": "rug",
+        "sol_exit": 81.09,
+        "btc_exit": 62661
       }
     ]
   }
