@@ -157,7 +157,7 @@ def _ret(entry: float | None, exit_: float | None) -> float | None:
     return (exit_ - entry) / entry
 
 
-def _fmt_pos(pos: dict, exit_price: float | None, sol_now: float | None,
+def _fmt_pos(mint: str, pos: dict, exit_price: float | None, sol_now: float | None,
              btc_now: float | None, closed: bool) -> tuple[str, float | None, float | None, float | None]:
     r = _ret(pos["entry_price"], exit_price)
     sol_r = _ret(pos.get("sol_entry"), pos.get("sol_exit") if closed else sol_now)
@@ -169,10 +169,13 @@ def _fmt_pos(pos: dict, exit_price: float | None, sol_now: float | None,
     if pos.get("backfilled"):
         tags.append("backfilled")
     tag = f" [{', '.join(tags)}]" if tags else ""
+    # Symbol links to GMGN; the raw mint below is tap-to-copy in Telegram.
     line = (
-        f"• `{pos['symbol']}` *{f'{r:+.0%}' if r is not None else '?'}* "
+        f"• [{pos['symbol']}](https://gmgn.ai/sol/token/{mint}) "
+        f"*{f'{r:+.0%}' if r is not None else '?'}* "
         f"({held_h:.0f}h){tag} · SOL {f'{sol_r:+.1%}' if sol_r is not None else '?'} "
-        f"· BTC {f'{btc_r:+.1%}' if btc_r is not None else '?'}"
+        f"· BTC {f'{btc_r:+.1%}' if btc_r is not None else '?'}\n"
+        f"  `{mint}`"
     )
     return line, r, sol_r, btc_r
 
@@ -190,7 +193,7 @@ def report_text() -> str:
     if book["open"]:
         lines.append(f"*Open ({len(book['open'])})*")
         for mint, pos in book["open"].items():
-            line, r, sol_r, btc_r = _fmt_pos(pos, _mark(mint), sol_now, btc_now, closed=False)
+            line, r, sol_r, btc_r = _fmt_pos(mint, pos, _mark(mint), sol_now, btc_now, closed=False)
             lines.append(line)
             rets.append((r, sol_r, btc_r))
         lines.append("")
@@ -198,7 +201,8 @@ def report_text() -> str:
     if book["closed"]:
         lines.append(f"*Closed ({len(book['closed'])})*")
         for pos in book["closed"]:
-            line, r, sol_r, btc_r = _fmt_pos(pos, pos.get("exit_price"), sol_now, btc_now, closed=True)
+            line, r, sol_r, btc_r = _fmt_pos(pos.get("mint", "?"), pos, pos.get("exit_price"),
+                                             sol_now, btc_now, closed=True)
             lines.append(line)
             rets.append((r, sol_r, btc_r))
         lines.append("")
