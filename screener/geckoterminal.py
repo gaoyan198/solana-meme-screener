@@ -21,8 +21,8 @@ log = get_logger("gecko")
 _BASE = "https://api.geckoterminal.com/api/v2/networks/solana/pools"
 
 
-def ath_price(pool_address: str) -> float | None:
-    """Highest traded price (USD) we can see for this pool, or None."""
+def ath_price(pool_address: str, since_ts: float | None = None) -> float | None:
+    """Highest traded price (USD) for this pool, optionally only after since_ts."""
     highs: list[float] = []
     for timeframe, params in (
         ("minute", {"aggregate": 5, "limit": 1000, "currency": "usd"}),
@@ -39,7 +39,11 @@ def ath_price(pool_address: str) -> float | None:
                     continue
                 r.raise_for_status()
                 candles = (((r.json() or {}).get("data") or {}).get("attributes") or {}).get("ohlcv_list") or []
-                highs += [float(c[2]) for c in candles if isinstance(c, (list, tuple)) and len(c) > 2 and c[2]]
+                highs += [
+                    float(c[2]) for c in candles
+                    if isinstance(c, (list, tuple)) and len(c) > 2 and c[2]
+                    and (since_ts is None or (c[0] and float(c[0]) >= since_ts))
+                ]
                 break
             except Exception as e:  # noqa: BLE001
                 log.warning("GeckoTerminal %s failed for %s: %s", timeframe, pool_address[:8], e)

@@ -176,25 +176,26 @@ def _fmt_pos(mint: str, pos: dict, exit_price: float | None, sol_now: float | No
         tags.append("backfilled")
     tag = f" [{', '.join(tags)}]" if tags else ""
     mult = 1 + r if r is not None else None
-    peak = pos.get("peak_price")
-    peak_mult = peak / pos["entry_price"] if peak and pos["entry_price"] else None
-    peak_txt = f", peak {peak_mult:.2f}x" if peak_mult else ""
     entry_mcap = pos.get("entry_mcap")
     mcap_txt = _usd_short(entry_mcap)
     if entry_mcap and mult is not None:
         # Supply is ~constant for these tokens, so mcap scales with price.
         mcap_txt += f" → {_usd_short(entry_mcap * mult)}"
-    # Coin lifetime high — including before our entry and after our exit, so a
-    # stopped-out coin that later mooned shows up as an exit-rule failure.
+    # Peak since OUR entry only (pre-entry highs are noise for "what could we
+    # have captured"): candle high filtered by entry_ts, merged with our own
+    # 5-min marks. Includes post-exit highs — a stopped-out coin that later
+    # mooned is an exit-rule failure worth seeing.
     pair_addr = pos.get("pair")
     if not pair_addr:
         pair_addr = (best_pair(mint) or {}).get("pairAddress")
-    ath = ath_price(pair_addr) if pair_addr else None
-    ath_mult = ath / pos["entry_price"] if ath and pos["entry_price"] else None
-    if ath_mult:
-        peak_txt += f", coin ATH {ath_mult:.1f}x"
+    candle_high = ath_price(pair_addr, since_ts=pos["entry_ts"]) if pair_addr else None
+    peak = max((p for p in (pos.get("peak_price"), candle_high) if p), default=None)
+    peak_mult = peak / pos["entry_price"] if peak and pos["entry_price"] else None
+    peak_txt = ""
+    if peak_mult:
+        peak_txt = f", peak {peak_mult:.2f}x since entry"
         if entry_mcap:
-            mcap_txt += f" · ATH {_usd_short(entry_mcap * ath_mult)}"
+            mcap_txt += f" · peak {_usd_short(entry_mcap * peak_mult)}"
     # Symbol links to GMGN; the raw mint below is tap-to-copy in Telegram.
     line = (
         f"• [{pos['symbol']}](https://gmgn.ai/sol/token/{mint}) "
