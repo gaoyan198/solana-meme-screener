@@ -44,6 +44,8 @@ class Config:
 
     # --- scoring / alerting ---
     min_score: float = field(default_factory=lambda: _float("MIN_SCORE", 70))
+    # Momentum track: smart-money-free score threshold (retail runners).
+    momentum_min_score: float = field(default_factory=lambda: _float("MOMENTUM_MIN_SCORE", 72))
     max_alerts_per_scan: int = field(default_factory=lambda: _int("MAX_ALERTS_PER_SCAN", 3))
     alert_cooldown_hours: float = field(default_factory=lambda: _float("ALERT_COOLDOWN_HOURS", 24))
 

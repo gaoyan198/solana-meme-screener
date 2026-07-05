@@ -48,6 +48,10 @@ class Scored:
     total: float
     components: list[Component]
     holder_growth_rate: float | None   # fraction/hour between scans, None = no baseline
+    # Smart-money-free score: momentum+holders+safety+timing rescaled to /100.
+    # Catches ACM-type retail runners that have zero KOL presence early.
+    momentum_total: float = 0.0
+    track: str = "kol"                 # which alert track fired: "kol" | "momentum"
 
 
 def _clamp01(x: float) -> float:
@@ -163,16 +167,18 @@ def _timing(s: Snapshot) -> Component:
 
 
 def score(s: Snapshot, holder_growth_rate: float | None) -> Scored:
-    components = [
-        _momentum(s),
-        _holder_growth(s, holder_growth_rate),
-        _smart_money(s),
-        _safety(s),
-        _timing(s),
-    ]
+    momentum = _momentum(s)
+    holders = _holder_growth(s, holder_growth_rate)
+    smart = _smart_money(s)
+    safety = _safety(s)
+    timing = _timing(s)
+    components = [momentum, holders, smart, safety, timing]
+    mom_parts = (momentum, holders, safety, timing)
+    mom_max = sum(c.max_points for c in mom_parts)
     return Scored(
         snap=s,
         total=sum(c.points for c in components),
         components=components,
         holder_growth_rate=holder_growth_rate,
+        momentum_total=100 * sum(c.points for c in mom_parts) / mom_max,
     )

@@ -72,11 +72,19 @@ def scan() -> list[Scored]:
             gated.append(snap)
     log.info("%d candidates passed row-level gates", len(gated))
 
-    # Stage 2: enrich the most interesting ones (smart-money hint, then youth)
-    # with Dexscreener microstructure + RugCheck, then re-gate on fresher data.
-    gated.sort(key=lambda s: (s.smart_hint, -(s.age_hours or 99)), reverse=True)
+    # Stage 2: enrich with Dexscreener microstructure + RugCheck, then re-gate.
+    # The budget is split across two rankings — smart-money hint AND raw 1h
+    # volume — so a pure retail runner with zero KOL wallets (the ACM case)
+    # still gets enriched and scored instead of starving behind hinted tokens.
+    by_hint = sorted(gated, key=lambda s: (s.smart_hint, -(s.age_hours or 99)), reverse=True)
+    by_vol = sorted(gated, key=lambda s: s.vol_h1 or 0, reverse=True)
+    queue: list[Snapshot] = []
+    for hinted, voluminous in zip(by_hint, by_vol):
+        for snap in (hinted, voluminous):
+            if snap not in queue:
+                queue.append(snap)
     enriched: list[Snapshot] = []
-    for snap in gated[: config.max_enrich]:
+    for snap in queue[: config.max_enrich]:
         pair = best_pair(snap.address)
         if pair:
             snap.merge_pair(pair)
@@ -111,7 +119,16 @@ def scan() -> list[Scored]:
 
     results.sort(key=lambda sc: sc.total, reverse=True)
     for sc in results:
-        log.info("%-12s %5.1f/100  mcap %s  %s", sc.snap.symbol[:12], sc.total,
+        log.info("%-12s %5.1f/100 (mom %5.1f)  mcap %s  %s", sc.snap.symbol[:12], sc.total,
+                 sc.momentum_total,
                  f"${sc.snap.mcap_usd:,.0f}" if sc.snap.mcap_usd else "?",
                  " | ".join(f"{c.label} {c.points:.0f}/{c.max_points:.0f}" for c in sc.components))
-    return [sc for sc in results if sc.total >= config.min_score]
+
+    # Two alert tracks: the KOL composite, plus the smart-money-free momentum
+    # score for retail runners the KOL track is structurally blind to.
+    hits = [sc for sc in results if sc.total >= config.min_score]
+    for sc in results:
+        if sc not in hits and sc.momentum_total >= config.momentum_min_score:
+            sc.track = "momentum"
+            hits.append(sc)
+    return hits

@@ -58,6 +58,7 @@ def record(sc: Scored) -> None:
     book["open"][s.address] = {
         "symbol": s.symbol,
         "score": round(sc.total, 1),
+        "track": sc.track,
         "entry_ts": time.time(),
         "entry_price": s.price_usd,
         "entry_mcap": s.mcap_usd,
@@ -170,6 +171,8 @@ def _fmt_pos(mint: str, pos: dict, exit_price: float | None, sol_now: float | No
     btc_r = _ret(pos.get("btc_entry"), pos.get("btc_exit") if closed else btc_now)
     held_h = ((pos.get("exit_ts") or time.time()) - pos["entry_ts"]) / 3600
     tags = []
+    if pos.get("track") == "momentum":
+        tags.append("🔥MOM")
     if pos.get("exit_reason"):
         tags.append(pos["exit_reason"].upper())
     if pos.get("backfilled"):
@@ -224,14 +227,14 @@ def report_text() -> str:
     sol_now, btc_now = sol_btc_prices()
     lines: list[str] = ["📒 *Paper book* — $%.0f per alert, %.0fh hold" %
                         (config.paper_notional_usd, config.paper_hold_hours), ""]
-    rets: list[tuple[float | None, float | None, float | None]] = []
+    rets: list[tuple[str, float | None, float | None, float | None]] = []
 
     if book["open"]:
         lines.append(f"*Open ({len(book['open'])})*")
         for mint, pos in book["open"].items():
             line, r, sol_r, btc_r = _fmt_pos(mint, pos, _mark(mint), sol_now, btc_now, closed=False)
             lines.append(line)
-            rets.append((r, sol_r, btc_r))
+            rets.append((pos.get("track", "kol"), r, sol_r, btc_r))
         lines.append("")
 
     if book["closed"]:
@@ -240,14 +243,14 @@ def report_text() -> str:
             line, r, sol_r, btc_r = _fmt_pos(pos.get("mint", "?"), pos, pos.get("exit_price"),
                                              sol_now, btc_now, closed=True)
             lines.append(line)
-            rets.append((r, sol_r, btc_r))
+            rets.append((pos.get("track", "kol"), r, sol_r, btc_r))
         lines.append("")
 
     n = len(rets)
     notional = config.paper_notional_usd
-    book_val = sum(notional * (1 + (r or 0)) for r, _, _ in rets)
-    sol_val = sum(notional * (1 + (sr or 0)) for _, sr, _ in rets)
-    btc_val = sum(notional * (1 + (br or 0)) for _, _, br in rets)
+    book_val = sum(notional * (1 + (r or 0)) for _, r, _, _ in rets)
+    sol_val = sum(notional * (1 + (sr or 0)) for _, _, sr, _ in rets)
+    btc_val = sum(notional * (1 + (br or 0)) for _, _, _, br in rets)
     staked = n * notional
     lines.append(
         f"*Book* ${book_val:,.0f} on ${staked:,.0f} staked "
@@ -255,4 +258,15 @@ def report_text() -> str:
         f"Same $ in SOL ${sol_val:,.0f} ({(sol_val - staked) / staked:+.1%}) · "
         f"BTC ${btc_val:,.0f} ({(btc_val - staked) / staked:+.1%})"
     )
+    # Per-track split, once the momentum track has positions to compare.
+    mom = [t for t in rets if t[0] == "momentum"]
+    if mom:
+        kol = [t for t in rets if t[0] != "momentum"]
+        for label, grp in (("🎯 KOL", kol), ("🔥 Momentum", mom)):
+            if not grp:
+                continue
+            g_staked = len(grp) * notional
+            g_val = sum(notional * (1 + (r or 0)) for _, r, _, _ in grp)
+            lines.append(f"{label}: {len(grp)} pos · ${g_val:,.0f} on ${g_staked:,.0f} "
+                         f"({g_val / g_staked:.2f}x)")
     return "\n".join(lines)

@@ -38,6 +38,7 @@ jobs:
           GMGN_API_KEY: ${{ secrets.GMGN_API_KEY }}
           # Thresholds via repo Variables (Settings → Variables) — fall back to code defaults.
           MIN_SCORE: ${{ vars.MIN_SCORE }}
+          MOMENTUM_MIN_SCORE: ${{ vars.MOMENTUM_MIN_SCORE }}
           MAX_TOKEN_AGE_HOURS: ${{ vars.MAX_TOKEN_AGE_HOURS }}
           MIN_LIQUIDITY_USD: ${{ vars.MIN_LIQUIDITY_USD }}
           MIN_MCAP_USD: ${{ vars.MIN_MCAP_USD }}

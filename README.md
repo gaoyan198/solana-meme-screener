@@ -31,6 +31,15 @@ Smart money is deliberately the heaviest weight (v2, 2026-07-05): several smart
 wallets still holding a young token acts like an insider signal. The net-flow
 term guards the thesis's failure mode — KOLs crowded in but dumping on the hype.
 
+**Momentum track (dual-track, 2026-07-05).** Retail meta runners (the ACM case)
+pump with *zero* smart-money presence early — structurally invisible to the KOL
+composite. So a second score drops the smart-money component entirely
+(momentum + holders + safety + timing rescaled to /100) and fires a separate
+"🔥 Momentum runner" alert at ≥ `MOMENTUM_MIN_SCORE` (default 72). The
+enrichment budget is likewise split between smart-money-hinted tokens and raw
+volume leaders so zero-KOL tokens actually get scored. Paper positions are
+tagged per track — after a couple of weeks the book shows which thesis pays.
+
 Missing data earns *half* credit for that sub-part — unknowns can't max a
 token out, but can't zero out a strong one either.
 

@@ -23,8 +23,13 @@ def _fmt(sc: Scored) -> str:
     mcap = f"${s.mcap_usd:,.0f}" if s.mcap_usd is not None else "?"
     liq = f"${s.liquidity_usd:,.0f}" if s.liquidity_usd is not None else "?"
     holders = f"{s.holders:.0f}" if s.holders is not None else "?"
+    if sc.track == "momentum":
+        header = (f"🔥 *Momentum runner* — `{s.symbol}` · *{sc.momentum_total:.0f}/100* "
+                  f"(momentum track — smart money not required; KOL score {sc.total:.0f})")
+    else:
+        header = f"🎯 *Screener hit* — `{s.symbol}` · *{sc.total:.0f}/100*"
     lines = [
-        f"🎯 *Screener hit* — `{s.symbol}` · *{sc.total:.0f}/100*",
+        header,
         f"{s.name}",
         "",
     ]
