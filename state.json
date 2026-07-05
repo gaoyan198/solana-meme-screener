@@ -1,7 +1,8 @@
 {
   "alerted": {
     "5z6djd93D4twJD4mi8ST7tdAmA4XmrkovXuJy3mjpump": 1783235876.3807156,
-    "5xRRRd1fhGyBY2u31isvkL3rLtYUFXvau3JgkwiKpump": 1783235878.2804108
+    "5xRRRd1fhGyBY2u31isvkL3rLtYUFXvau3JgkwiKpump": 1783235878.2804108,
+    "7iCb5PWhnfeHLwpCZZ9bozNNaQYiFB7dkUyoVNDvpump": 1783237078.743288
   },
   "history": {
     "DLAHMrDSzThzBRFQdi9CYtH1aej9hALWexMM6Bnnpump": [
@@ -19,6 +20,10 @@
       ],
       [
         1783236747.7510304,
+        1163.0
+      ],
+      [
+        1783237047.563595,
         1163.0
       ]
     ],
@@ -42,6 +47,10 @@
       [
         1783236748.5363762,
         1507.0
+      ],
+      [
+        1783237049.9093573,
+        1514.0
       ]
     ],
     "2XdaoJDb8LbjwMDSSRmKnPHRwinf62x91ocJjoF7pump": [
@@ -56,6 +65,10 @@
       [
         1783236749.5828433,
         696.0
+      ],
+      [
+        1783237049.1551318,
+        694.0
       ]
     ],
     "GbqA4P83aRzSmt58QPNzNCNg4Y5AgRcMSE8JHsJdpump": [
@@ -78,6 +91,10 @@
       [
         1783236750.3029995,
         630.0
+      ],
+      [
+        1783237048.3451555,
+        640.0
       ]
     ],
     "Bm5hU3iYP9syzZHte1Ubv5GjSkMjFsCqaVyWcBdpump": [
@@ -100,6 +117,10 @@
       [
         1783236751.1874955,
         2731.0
+      ],
+      [
+        1783237050.6934223,
+        2732.0
       ]
     ],
     "CGT5pGSnokiTU7CLsfFCnAbvgGMxtZGvQVnrLRKbpump": [
@@ -122,6 +143,10 @@
       [
         1783236756.343098,
         447.0
+      ],
+      [
+        1783237055.5213816,
+        416.0
       ]
     ],
     "6ke1Spo4n6H2j3FRjAkusngLv6ovm9mibgPa9wHSpump": [
@@ -132,6 +157,10 @@
       [
         1783236753.5600386,
         380.0
+      ],
+      [
+        1783237053.0396516,
+        376.0
       ]
     ],
     "5xRRRd1fhGyBY2u31isvkL3rLtYUFXvau3JgkwiKpump": [
@@ -154,6 +183,10 @@
       [
         1783236751.965611,
         607.0
+      ],
+      [
+        1783237051.5239987,
+        610.0
       ]
     ],
     "ByJW8mYxC63m72t53u3PpmWbuFunw5nHeucFokHzpump": [
@@ -176,6 +209,10 @@
       [
         1783236755.611456,
         526.0
+      ],
+      [
+        1783237054.743378,
+        525.0
       ]
     ],
     "5qLt7Mvg9Qj8yGXmqx7mGWAPC2mLCJssfQcx43aBpump": [
@@ -198,6 +235,10 @@
       [
         1783236754.3119943,
         462.0
+      ],
+      [
+        1783237053.946256,
+        464.0
       ]
     ],
     "6mUXxdGMtxKDSw6zXiarQ5mgP3UC1LBzu9LjgXhFpump": [
@@ -220,6 +261,10 @@
       [
         1783236757.132631,
         731.0
+      ],
+      [
+        1783237056.330646,
+        732.0
       ]
     ],
     "H6QG1XUwKpXB94kJUzkcn4GaD3yzYTcm7xbBf4aopump": [
@@ -242,6 +287,10 @@
       [
         1783236757.9868407,
         306.0
+      ],
+      [
+        1783237057.1057606,
+        300.0
       ]
     ],
     "5z6djd93D4twJD4mi8ST7tdAmA4XmrkovXuJy3mjpump": [
@@ -302,6 +351,10 @@
       [
         1783236752.7628193,
         567.0
+      ],
+      [
+        1783237052.269211,
+        560.0
       ]
     ],
     "7iCb5PWhnfeHLwpCZZ9bozNNaQYiFB7dkUyoVNDvpump": [
@@ -316,6 +369,10 @@
       [
         1783236463.2465901,
         164.0
+      ],
+      [
+        1783237061.7564263,
+        177.0
       ]
     ],
     "4Vn4cyu67VJouC3BqEu7AAQix8k7ryLrA6mMmkjjpump": [
@@ -326,12 +383,20 @@
       [
         1783236759.3356154,
         727.0
+      ],
+      [
+        1783237058.9511182,
+        729.0
       ]
     ],
     "93MNH6G8VH5bZrTykvJK9efhYfAT6WFTpxmsJo1rpump": [
       [
         1783236458.577057,
         331.0
+      ],
+      [
+        1783237058.2103004,
+        328.0
       ]
     ]
   },
@@ -364,6 +429,19 @@
         "sol_entry": 80.4,
         "btc_entry": 62692,
         "peak_price": 0.0001221
+      },
+      "7iCb5PWhnfeHLwpCZZ9bozNNaQYiFB7dkUyoVNDvpump": {
+        "symbol": "BREAD",
+        "score": 53.9,
+        "track": "momentum",
+        "entry_ts": 1783237078.884889,
+        "entry_price": 3.145e-05,
+        "entry_mcap": 31459.28,
+        "tp_price": 6.29e-05,
+        "sl_price": 1.8869999999999997e-05,
+        "pair": "7zbPu9tF5oKYvvxeEENKQXa3T4NphhSN9gr2rAdkxts2",
+        "sol_entry": 80.44,
+        "btc_entry": 62798
       }
     },
     "closed": []
