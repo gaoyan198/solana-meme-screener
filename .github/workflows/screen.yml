@@ -1,8 +1,11 @@
 name: meme-screen
 
+# GitHub throttles */5 crons on shared runners to ~hourly in practice, so each
+# job loops 5-min scans for ~55 minutes — true 5-min cadence regardless of how
+# late the next cron fire arrives. Concurrency below queues the next fire.
 on:
   schedule:
-    - cron: "*/5 * * * *"   # every 5 minutes (GitHub's minimum granularity)
+    - cron: "*/5 * * * *"
   workflow_dispatch: {}
 
 # Prevent overlapping runs from stepping on the committed state file.
@@ -16,6 +19,7 @@ permissions:
 jobs:
   screen:
     runs-on: ubuntu-latest
+    timeout-minutes: 65
     steps:
       - uses: actions/checkout@v4
 
@@ -46,16 +50,19 @@ jobs:
           PAPER_HOLD_HOURS: ${{ vars.PAPER_HOLD_HOURS }}
           PAPER_TP_PCT: ${{ vars.PAPER_TP_PCT }}
           PAPER_SL_PCT: ${{ vars.PAPER_SL_PCT }}
-        run: python main.py
-
-      - name: Persist state
+        # 11 passes × ~5 min ≈ 55 min. State is committed after every pass so
+        # alert dedup and paper exits survive an interrupted job.
         run: |
-          if ! git diff --quiet -- state.json; then
-            git config user.name "meme-screener"
-            git config user.email "meme-screener@users.noreply.github.com"
-            git add state.json
-            git commit -m "chore: update scan state [skip ci]"
-            git push
-          else
-            echo "No state change."
-          fi
+          git config user.name "meme-screener"
+          git config user.email "meme-screener@users.noreply.github.com"
+          for i in $(seq 1 11); do
+            echo "=== scan pass $i/11 ==="
+            python main.py || true
+            if ! git diff --quiet -- state.json; then
+              git add state.json
+              git commit -m "chore: update scan state [skip ci]"
+              git pull --rebase origin master || true
+              git push || true
+            fi
+            [ "$i" -lt 11 ] && sleep 300
+          done
