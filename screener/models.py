@@ -64,6 +64,8 @@ class Snapshot:
     sells_m5: float | None = None
     change_m5_pct: float | None = None
     change_h1_pct: float | None = None
+    # most liquid pool address (filled by merge_pair; used for OHLCV/ATH lookups)
+    pair_address: str | None = None
     # deep smart-money check (filled by scanner for top candidates)
     deep_checked: bool = False
     smart_holding: int = 0
@@ -121,6 +123,7 @@ class Snapshot:
         self.price_usd = num(pair, "priceUsd") or self.price_usd
         self.mcap_usd = num(pair, "marketCap", "fdv") or self.mcap_usd
         self.liquidity_usd = num(liq, "usd") or self.liquidity_usd
+        self.pair_address = str(first(pair, "pairAddress") or "") or self.pair_address
         created_ms = num(pair, "pairCreatedAt")
         if self.created_ts is None and created_ms:
             self.created_ts = created_ms / 1000

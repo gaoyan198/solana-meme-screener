@@ -5,6 +5,7 @@ import requests
 
 from . import paper
 from .config import config
+from .geckoterminal import ath_price
 from .log import get_logger
 from .scoring import Scored
 
@@ -33,6 +34,14 @@ def _fmt(sc: Scored) -> str:
         "",
         f"• MCAP *{mcap}* · Liq *{liq}* · Age *{age}* · Holders *{holders}*",
     ]
+    if s.pair_address and s.price_usd:
+        ath = ath_price(s.pair_address)
+        if ath and ath > 0:
+            ath_mult = ath / s.price_usd
+            ath_mcap = paper._usd_short(s.mcap_usd * ath_mult) if s.mcap_usd else "?"
+            lines.append(f"• ATH *{ath_mcap}* mcap — *{ath_mult:.1f}x* from here to reclaim"
+                         if ath_mult >= 1.05 else
+                         f"• ATH *{ath_mcap}* mcap — trading at its ATH now")
     if s.price_usd:
         tp, sl = paper.targets(s.price_usd)
         lines += [

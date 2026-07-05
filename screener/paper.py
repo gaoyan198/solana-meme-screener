@@ -21,6 +21,7 @@ import time
 from .benchmarks import sol_btc_prices
 from .config import config
 from .dexscreener import best_pair
+from .geckoterminal import ath_price
 from .log import get_logger
 from .models import num
 from .scoring import Scored
@@ -62,6 +63,7 @@ def record(sc: Scored) -> None:
         "entry_mcap": s.mcap_usd,
         "tp_price": tp,
         "sl_price": sl,
+        "pair": s.pair_address,
         "sol_entry": sol,
         "btc_entry": btc,
     }
@@ -94,6 +96,7 @@ def backfill_alerted() -> None:
             "entry_mcap": num(pair, "marketCap", "fdv"),
             "tp_price": tp,
             "sl_price": sl,
+            "pair": pair.get("pairAddress"),
             "sol_entry": sol,
             "btc_entry": btc,
             "backfilled": True,
@@ -181,6 +184,17 @@ def _fmt_pos(mint: str, pos: dict, exit_price: float | None, sol_now: float | No
     if entry_mcap and mult is not None:
         # Supply is ~constant for these tokens, so mcap scales with price.
         mcap_txt += f" → {_usd_short(entry_mcap * mult)}"
+    # Coin lifetime high — including before our entry and after our exit, so a
+    # stopped-out coin that later mooned shows up as an exit-rule failure.
+    pair_addr = pos.get("pair")
+    if not pair_addr:
+        pair_addr = (best_pair(mint) or {}).get("pairAddress")
+    ath = ath_price(pair_addr) if pair_addr else None
+    ath_mult = ath / pos["entry_price"] if ath and pos["entry_price"] else None
+    if ath_mult:
+        peak_txt += f", coin ATH {ath_mult:.1f}x"
+        if entry_mcap:
+            mcap_txt += f" · ATH {_usd_short(entry_mcap * ath_mult)}"
     # Symbol links to GMGN; the raw mint below is tap-to-copy in Telegram.
     line = (
         f"• [{pos['symbol']}](https://gmgn.ai/sol/token/{mint}) "
