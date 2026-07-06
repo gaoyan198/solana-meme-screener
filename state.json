@@ -3002,10 +3002,6 @@
     ],
     "ABDR768zqomnEPkHT4y1p1W3JTsLwpJxRhbSSWKcpump": [
       [
-        1783365996.1566637,
-        1125.0
-      ],
-      [
         1783366295.7034888,
         1129.0
       ],
@@ -3096,13 +3092,13 @@
       [
         1783377928.900044,
         1155.0
+      ],
+      [
+        1783378229.3819125,
+        1146.0
       ]
     ],
     "CJCrQsBL4rAwmGEcEv2dzNER5mYRFEzjwN5CWKz1fqou": [
-      [
-        1783365988.3707755,
-        1260.0
-      ],
       [
         1783366288.4243953,
         1262.0
@@ -3194,6 +3190,10 @@
       [
         1783377927.5879374,
         1312.0
+      ],
+      [
+        1783378227.4175885,
+        1307.0
       ]
     ],
     "8vt1sbaHaLPBVsqTdaciZUpM23JWh7AjXuN5vQCgpump": [
@@ -3568,10 +3568,6 @@
     ],
     "DkmmVCUaBAcYjecqMdX7NdNQFCfb6uh1yQq9HEP8pump": [
       [
-        1783365697.0529795,
-        2563.0
-      ],
-      [
         1783365997.1136165,
         2556.0
       ],
@@ -3662,6 +3658,10 @@
       [
         1783377931.9531257,
         2954.0
+      ],
+      [
+        1783378232.410136,
+        2945.0
       ]
     ],
     "6DbipwxwfAEn2B4dVmqbBZjo3sMVYf5Tt1sD2TwSpump": [
@@ -3671,10 +3671,6 @@
       ]
     ],
     "5asSNpLpxzZpkbqZkeuT3tCPPqWtZBQivbbrQHMcpump": [
-      [
-        1783361126.1915483,
-        2334.0
-      ],
       [
         1783361425.9828775,
         2331.0
@@ -3766,13 +3762,13 @@
       [
         1783377920.8291142,
         2180.0
+      ],
+      [
+        1783378220.2874725,
+        2178.0
       ]
     ],
     "AVVLwZcNnts8JffDiEZxLNXGk9nLAzRr6hf9KDWapump": [
-      [
-        1783362337.768638,
-        2130.0
-      ],
       [
         1783365688.6005402,
         2332.0
@@ -3864,6 +3860,10 @@
       [
         1783377929.5656009,
         3477.0
+      ],
+      [
+        1783378230.0390232,
+        3547.0
       ]
     ],
     "Aya6hSwtyrqCrqcgfxtEE1wmisgyLH1UM66cbHhHpump": [
@@ -4182,10 +4182,6 @@
     ],
     "jymBeC2kKKnmoVnZowYiqe7d85ifEueYjVkvjwYpump": [
       [
-        1783365992.3652127,
-        1052.0
-      ],
-      [
         1783366291.6604319,
         1046.0
       ],
@@ -4276,6 +4272,10 @@
       [
         1783377928.2155669,
         949.0
+      ],
+      [
+        1783378228.730016,
+        935.0
       ]
     ],
     "DSrhpPYLZPcWx1tCCkhdf2Z7ErgMwsRw4NfFiHDwY9em": [
@@ -4904,6 +4904,10 @@
       [
         1783377925.6443894,
         253.0
+      ],
+      [
+        1783378224.6529005,
+        256.0
       ]
     ],
     "Cp9B4cTNHFQyBTVC3wknLGpEaRzEpCrXPzYyLodTpump": [
@@ -5120,6 +5124,10 @@
       [
         1783377926.9319324,
         638.0
+      ],
+      [
+        1783378228.05385,
+        631.0
       ]
     ],
     "DbY3rQRPdyydSXcR2K8yfLqcmumSHxNw3B8ahpZXpump": [
@@ -5270,6 +5278,10 @@
       [
         1783377935.6279933,
         440.0
+      ],
+      [
+        1783378231.3847091,
+        438.0
       ]
     ],
     "9BPfvuWa21VZ5HDZrdf2NBPqckt4LynbdTiuovnBbonk": [
@@ -5342,6 +5354,10 @@
       [
         1783377924.2298095,
         1040.0
+      ],
+      [
+        1783378225.9538836,
+        1036.0
       ]
     ],
     "74iPzuwmAggaCGxXxph5KX7JLvZvHKnBN66zApSpump": [
@@ -5484,6 +5500,10 @@
       [
         1783377923.16614,
         708.0
+      ],
+      [
+        1783378221.0254524,
+        739.0
       ]
     ],
     "pumpgrWRAztPTe9HpqUUj23hWDcz1qvkbMRiDM6wint": [
@@ -5494,6 +5514,10 @@
       [
         1783377922.5104973,
         14300.0
+      ],
+      [
+        1783378222.2132456,
+        14297.0
       ]
     ],
     "6u7N3VXoqdzSnR3B9CgF3gTcaSsh2ngxNy4iNFnRpump": [
@@ -5504,6 +5528,10 @@
       [
         1783377921.861359,
         761.0
+      ],
+      [
+        1783378222.8676114,
+        753.0
       ]
     ],
     "HBibqRqqzAbnvZ4ogkcma6nzaoNWgpEimajVjHA3pump": [
@@ -5520,6 +5548,24 @@
       [
         1783377931.3060234,
         89.0
+      ]
+    ],
+    "6iJxbADkc98FoDwv8f9PRJjweQgKyExmPBdFk6qRpump": [
+      [
+        1783378223.98267,
+        234.0
+      ]
+    ],
+    "EYGHfBa4ETyJhALtWzDNPhCGvUenxFsY7LrYhkEjpump": [
+      [
+        1783378225.2986867,
+        216.0
+      ]
+    ],
+    "9uyrFtA4gM4X7UZN9wS892anAKoAP9tjpdruBT85pump": [
+      [
+        1783378226.7646887,
+        281.0
       ]
     ]
   },
