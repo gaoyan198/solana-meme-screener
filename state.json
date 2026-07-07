@@ -43,7 +43,8 @@
     "7gn74ijozV4fogUzwPwnC7yiBCkJNMQcXoTc14AdQfMP": 1783441496.712319,
     "DMGvqNkhS3BtNDRypN6tEY6jpkatHJj4WQZtPmFzpump": 1783448512.3379421,
     "8N1xPzwZtuRQSdRMnbjAjdd2tK9V8nF7Wrw8gGeLpump": 1783459461.1045904,
-    "929BMbs411kMaAbGkf3mhKhj6o2VjbPgk9ar6Qo4poke": 1783459461.6727502
+    "929BMbs411kMaAbGkf3mhKhj6o2VjbPgk9ar6Qo4poke": 1783459461.6727502,
+    "8BUfajjEqAJnyBTCDQSL4hb5rrAtbMgGLR49yaSbonk": 1783460959.7140121
   },
   "history": {
     "3QF746oTHHb8So9ppssoKBHTfyKkjVkFFC37s477pump": [
@@ -3302,10 +3303,6 @@
     ],
     "9WHXEcGp8FVRZhBinBj6pUr3FzpXhDNBkxXVhHk5pump": [
       [
-        1783447877.8523011,
-        1339.0
-      ],
-      [
         1783448177.4813828,
         1341.0
       ],
@@ -3396,6 +3393,10 @@
       [
         1783460636.0013056,
         1396.0
+      ],
+      [
+        1783460935.6626482,
+        1397.0
       ]
     ],
     "2rovxjbNfyVuTdDTpH3EtsWEFJKCmYasuLud3MRHpump": [
@@ -3898,10 +3899,6 @@
     ],
     "VXjDEv3EeJgg5J88uNasoMwaryCtdfKw5YNkAoJBpwU": [
       [
-        1783441467.3281124,
-        1722.0
-      ],
-      [
         1783441766.9883208,
         1714.0
       ],
@@ -3992,6 +3989,10 @@
       [
         1783460629.7833257,
         1562.0
+      ],
+      [
+        1783460929.904569,
+        1556.0
       ]
     ],
     "2hFkkuRoWx5PqwcrJPcxy8bMRwsduzfNqG7AajAppump": [
@@ -4648,10 +4649,6 @@
     ],
     "CZn8vPpoS6tdTBkZm6waPf1DXuazq3DqAnPDAMeUpump": [
       [
-        1783446682.8758316,
-        291.0
-      ],
-      [
         1783446985.1690333,
         281.0
       ],
@@ -4742,6 +4739,10 @@
       [
         1783460334.892899,
         242.0
+      ],
+      [
+        1783460937.319306,
+        247.0
       ]
     ],
     "4cJisAm79bs6UWmjyAQSEtkGRsjNcq4Mx8arw6cTpump": [
@@ -4751,10 +4752,6 @@
       ]
     ],
     "J9fVUSrsGYpuyXggAFJpf8WGkVsjqjCpBzyBxh6spump": [
-      [
-        1783446089.0389233,
-        3949.0
-      ],
       [
         1783446384.501801,
         3941.0
@@ -4846,6 +4843,10 @@
       [
         1783460041.2875714,
         3251.0
+      ],
+      [
+        1783460940.8190787,
+        3239.0
       ]
     ],
     "22oesKQuMBmxUTWfeFDjNnYS19VujFcBmi4EL8gWpump": [
@@ -4907,10 +4908,6 @@
       ]
     ],
     "95bAE5K5SeqpQ4veagLGRi5qfK83rtCeK9SxjBvNpump": [
-      [
-        1783446686.2519195,
-        428.0
-      ],
       [
         1783446988.379843,
         424.0
@@ -5002,6 +4999,10 @@
       [
         1783460332.6044288,
         447.0
+      ],
+      [
+        1783460934.943224,
+        440.0
       ]
     ],
     "Cwty9S8KTpnvUU9Z5pkLjamNqjUiYe3RbUHFfpWwpump": [
@@ -5324,10 +5325,6 @@
     ],
     "5V1uDUcnPvY1YmQEmhgyQLgSqh1nZgkExx7LwzoNpump": [
       [
-        1783446099.2544148,
-        302.0
-      ],
-      [
         1783446391.9956875,
         294.0
       ],
@@ -5418,6 +5415,10 @@
       [
         1783460641.421149,
         304.0
+      ],
+      [
+        1783460942.0267327,
+        303.0
       ]
     ],
     "AotvWSxaQtKaaugBNkT4Zx4dwv256W3y9pDLG2WPpump": [
@@ -5465,10 +5466,6 @@
       ]
     ],
     "8B3UJbbPWfg2DLF7iWzm9WnXH9y5jhYUUoZaLhqvpump": [
-      [
-        1783448182.5003643,
-        2809.0
-      ],
       [
         1783448481.2188027,
         2840.0
@@ -5560,6 +5557,10 @@
       [
         1783460632.9683642,
         4693.0
+      ],
+      [
+        1783460933.080532,
+        4834.0
       ]
     ],
     "VpRLwUcRhctCh2WBA1SX9RHdSSbUF4f5aCUFh9Ypump": [
@@ -5764,10 +5765,6 @@
     ],
     "DMGvqNkhS3BtNDRypN6tEY6jpkatHJj4WQZtPmFzpump": [
       [
-        1783448188.8677518,
-        553.0
-      ],
-      [
         1783448492.6515815,
         578.0
       ],
@@ -5858,6 +5855,10 @@
       [
         1783460642.136787,
         692.0
+      ],
+      [
+        1783460942.7595632,
+        691.0
       ]
     ],
     "8Zvw6JAMjoPXUAe7ug2TD4mcNbauaZcNLhe4xCvZpump": [
@@ -6052,6 +6053,10 @@
       [
         1783460636.7116978,
         416.0
+      ],
+      [
+        1783460937.9778128,
+        406.0
       ]
     ],
     "Akg6VFNnUqeSG23vNqoTzdkY6yxaWAECEodshv1Wpump": [
@@ -6238,6 +6243,10 @@
       [
         1783460631.6006851,
         1202.0
+      ],
+      [
+        1783460931.6409488,
+        1178.0
       ]
     ],
     "FiYM4rhqCkGpsVi7MXqW9tMD7btkcJB4TtaBDNcQpump": [
@@ -6304,6 +6313,10 @@
       [
         1783460635.2720172,
         309.0
+      ],
+      [
+        1783460933.899924,
+        450.0
       ]
     ],
     "D2JK6iYWnBDQrsVq6ePqu3nFHakZij4jPfDazLkJXfr4": [
@@ -6314,6 +6327,10 @@
       [
         1783458833.5281074,
         208.0
+      ],
+      [
+        1783460936.6510386,
+        228.0
       ]
     ],
     "FY9yQSFokAyuKm33HBAUCYjvjmEbeXfDTpSiVZNUpump": [
@@ -6348,6 +6365,10 @@
       [
         1783460638.3886352,
         195.0
+      ],
+      [
+        1783460939.775465,
+        192.0
       ]
     ],
     "7VBNRp8mY5AbPNzb9uvJfzmk4u6NC8oDGFxMrMiKpump": [
@@ -6384,6 +6405,10 @@
       [
         1783460640.007652,
         463.0
+      ],
+      [
+        1783460938.686399,
+        461.0
       ]
     ],
     "G9uu9P3rfEFWAz9P4S8EcK5Y82n91BDDi9Zc7smQKSXY": [
@@ -6406,6 +6431,10 @@
       [
         1783460633.900681,
         117.0
+      ],
+      [
+        1783460932.361939,
+        111.0
       ]
     ],
     "6wJMj699GXTivKMroFAp9yEMzAjdnA98F855FAmApump": [
@@ -6422,6 +6451,10 @@
       [
         1783460630.4995449,
         736.0
+      ],
+      [
+        1783460930.6251612,
+        734.0
       ]
     ]
   },
@@ -6454,6 +6487,20 @@
         "sol_entry": 81.44,
         "btc_entry": 63439,
         "peak_price": 0.0007645
+      },
+      "8BUfajjEqAJnyBTCDQSL4hb5rrAtbMgGLR49yaSbonk": {
+        "symbol": "Gordo",
+        "score": 69.3,
+        "track": "momentum",
+        "entry_ts": 1783460959.7631679,
+        "entry_price": 8.938e-05,
+        "entry_mcap": 89389.0,
+        "tp_price": 0.00017876,
+        "sl_price": 5.3628e-05,
+        "pair": "BwTGyteK6F9aPiqG1gDKCAyTo9g4DCmKhzGqtuvqrShZ",
+        "sol_entry": 80.65,
+        "btc_entry": 63424,
+        "peak_price": 9.673e-05
       }
     },
     "closed": [
