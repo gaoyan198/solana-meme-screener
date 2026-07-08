@@ -3795,10 +3795,6 @@
     ],
     "8B3UJbbPWfg2DLF7iWzm9WnXH9y5jhYUUoZaLhqvpump": [
       [
-        1783472955.5535858,
-        5019.0
-      ],
-      [
         1783473256.9965925,
         5028.0
       ],
@@ -3889,6 +3885,10 @@
       [
         1783488540.3664994,
         5700.0
+      ],
+      [
+        1783494825.0561075,
+        6166.0
       ]
     ],
     "VpRLwUcRhctCh2WBA1SX9RHdSSbUF4f5aCUFh9Ypump": [
@@ -4093,10 +4093,6 @@
     ],
     "DMGvqNkhS3BtNDRypN6tEY6jpkatHJj4WQZtPmFzpump": [
       [
-        1783469026.6568556,
-        960.0
-      ],
-      [
         1783469327.2497923,
         959.0
       ],
@@ -4187,6 +4183,10 @@
       [
         1783486746.389604,
         1241.0
+      ],
+      [
+        1783494830.5971322,
+        1349.0
       ]
     ],
     "8Zvw6JAMjoPXUAe7ug2TD4mcNbauaZcNLhe4xCvZpump": [
@@ -4291,10 +4291,6 @@
     ],
     "JCKJviubAbCSztaGnKGqaiKhmpsE9uDTxcENXZrLpump": [
       [
-        1783469329.1426897,
-        439.0
-      ],
-      [
         1783469630.5925796,
         433.0
       ],
@@ -4385,6 +4381,10 @@
       [
         1783488246.7986655,
         517.0
+      ],
+      [
+        1783494832.73323,
+        526.0
       ]
     ],
     "Akg6VFNnUqeSG23vNqoTzdkY6yxaWAECEodshv1Wpump": [
@@ -5151,10 +5151,6 @@
     ],
     "Hk8qqvyYU5gfAB5QCZCcJq3gR3TZ8LtvNmA1EM3bpump": [
       [
-        1783472952.5624366,
-        1623.0
-      ],
-      [
         1783473254.1755395,
         1622.0
       ],
@@ -5245,6 +5241,10 @@
       [
         1783488541.597515,
         1553.0
+      ],
+      [
+        1783494826.3429587,
+        1571.0
       ]
     ],
     "DWR1DQ1b12hUb5nRnqQxmdyAnk7MhnLrRxNVdo7Jpump": [
@@ -5483,10 +5483,6 @@
     ],
     "5ECDHLSRpMiyW9wNY5YVZXUst3xTvngWSLmzYvLFpump": [
       [
-        1783472951.2331114,
-        1100.0
-      ],
-      [
         1783473252.5721154,
         1119.0
       ],
@@ -5577,6 +5573,10 @@
       [
         1783488544.4064436,
         1019.0
+      ],
+      [
+        1783494833.5309603,
+        1082.0
       ]
     ],
     "BCxPwtkp121xu9FkE9a3kPFq3Chi8ktMu8yrpoa5pump": [
@@ -5755,6 +5755,10 @@
       [
         1783488546.3392458,
         389.0
+      ],
+      [
+        1783494829.2892005,
+        415.0
       ]
     ],
     "CgnQ8a1u99Gk7qoySMd2wrGPMPm9bdcSJNhqMEkYpump": [
@@ -5809,6 +5813,10 @@
       [
         1783488539.7539766,
         588.0
+      ],
+      [
+        1783494822.036473,
+        1175.0
       ]
     ],
     "3gtpAkuPV3vKWmVhjPg7Kq96imW5sGwAMGPtVW25pump": [
@@ -5859,6 +5867,10 @@
       [
         1783488536.8103647,
         1142.0
+      ],
+      [
+        1783494821.230976,
+        946.0
       ]
     ],
     "8GJ9i35icmNKn3KSNtBZ8JSS7ZHxnaZjQTD62GFSpump": [
@@ -5909,6 +5921,10 @@
       [
         1783488545.41967,
         367.0
+      ],
+      [
+        1783494834.359713,
+        363.0
       ]
     ],
     "2vWdN2T4z1w11nK5C1uaxyd9gtLppuwTpeXseFz6pump": [
@@ -5989,6 +6005,10 @@
       [
         1783488536.1899672,
         1097.0
+      ],
+      [
+        1783494822.8326201,
+        992.0
       ]
     ],
     "GQXLWxkw6XGNupviKAzvi1muC4KgfVMi3UHNRbFnpump": [
@@ -6015,32 +6035,31 @@
       [
         1783488537.428298,
         493.0
+      ],
+      [
+        1783494827.6797073,
+        484.0
       ]
     ],
     "77x1fCskDLaiZmm2uZKEhARSCD2B86VaahTkK2Vfpump": [
       [
         1783488235.803668,
         736.0
+      ],
+      [
+        1783494823.6482565,
+        855.0
+      ]
+    ],
+    "7CNp5dJCSjk8YXbPvJ63WhQQrrZ8vWFx9SXm5x8gPUmp": [
+      [
+        1783494831.9390066,
+        189.0
       ]
     ]
   },
   "paper": {
-    "open": {
-      "9Pfync3ejPC9eHqVzq3nYQJAhyhjqpnB9UsaSfLxpump": {
-        "symbol": "KET",
-        "score": 50.4,
-        "track": "momentum",
-        "entry_ts": 1783428971.198578,
-        "entry_price": 0.0006703,
-        "entry_mcap": 670376.0,
-        "tp_price": 0.0013406,
-        "sl_price": 0.00040218,
-        "pair": "Fex8CSkNXfaxAPRqQARKGchYAMVfwDg28sfmBXXGkNGX",
-        "sol_entry": 81.44,
-        "btc_entry": 63439,
-        "peak_price": 0.0007645
-      }
-    },
+    "open": {},
     "closed": [
       {
         "symbol": "LFG",
@@ -6958,6 +6977,26 @@
         "exit_reason": "sl",
         "sol_exit": 78.92,
         "btc_exit": 62863
+      },
+      {
+        "symbol": "KET",
+        "score": 50.4,
+        "track": "momentum",
+        "entry_ts": 1783428971.198578,
+        "entry_price": 0.0006703,
+        "entry_mcap": 670376.0,
+        "tp_price": 0.0013406,
+        "sl_price": 0.00040218,
+        "pair": "Fex8CSkNXfaxAPRqQARKGchYAMVfwDg28sfmBXXGkNGX",
+        "sol_entry": 81.44,
+        "btc_entry": 63439,
+        "peak_price": 0.0007645,
+        "mint": "9Pfync3ejPC9eHqVzq3nYQJAhyhjqpnB9UsaSfLxpump",
+        "exit_ts": 1783494849.2725148,
+        "exit_price": 0.0003858,
+        "exit_reason": "sl",
+        "sol_exit": 77.89,
+        "btc_exit": 62632
       }
     ]
   }
